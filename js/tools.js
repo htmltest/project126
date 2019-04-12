@@ -1265,6 +1265,14 @@ function initForm() {
         $(this).find('input').prop('checked', true).trigger('change');
     });
 
+    $('.form-file input').change(function() {
+        var curInput = $(this);
+        var curField = curInput.parent().parent();
+        curField.find('.form-file-name').html(curInput.val().replace(/.*(\/|\\)/, ''));
+        curField.find('label.error').remove();
+        curField.removeClass('error');
+    });
+
     $('form').each(function() {
         if ($(this).hasClass('ajaxForm')) {
             $(this).validate({
