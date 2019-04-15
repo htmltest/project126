@@ -586,29 +586,31 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 
 .choose {padding:0 0 0 224px; margin:0 0 -60px 0}
 
-.choose-form {position:fixed; left:0; top:0; width:164px; padding:0 30px; height:100%; background:#499e3b; z-index:1000}
-.choose-form form {margin:0; padding:87px 0 40px 0; width:164px}
-.choose-form .form-label {color:#fff; margin:13px 0 11px 0; font:bold 15px/20px "Roboto Slab", serif; text-align:center}
+.choose-form {position:fixed; left:0; top:0; width:164px; padding:0 30px; height:100%; background:#f26538; z-index:1000}
+.choose-form form {margin:0; padding:83px 0 40px 0; width:164px}
+.choose-form .form-label {color:#fff; margin:20px 0 4px 0; text-align:center}
 .choose-form-submit {padding:16px 0 0 0}
-.choose-form-submit input {vertical-align:top; width:100%; height:40px; margin:0; padding:0; outline:none; text-align:center; border:1px solid #a4cf9d; background:transparent; border-radius:3px; -webkit-appearance:none; cursor:pointer; color:#fff; text-transform:uppercase; font:bold 13px/38px "Roboto Slab", serif}
+.choose-form-submit input {vertical-align:top; width:100%; height:40px; margin:0; padding:0; outline:none; text-align:center; border:1px solid #a4cf9d; background:transparent; border-radius:3px; -webkit-appearance:none; cursor:pointer; color:#fff; text-transform:uppercase; font:bold 13px/38px "Open Sans", sans-serif}
 .choose-form-submit input:hover {border-color:#fff; background:#fff; color:#252525}
 .choose-form-reset {padding:11px 0 0 0}
-.choose-form-reset input {vertical-align:top; width:100%; height:40px; margin:0; padding:0; outline:none; text-align:center; border:1px solid #3e7e33; background:transparent; border-radius:3px; -webkit-appearance:none; cursor:pointer; color:#296120; text-transform:uppercase; font:bold 13px/38px "Roboto Slab", serif}
-.choose-form-reset input:hover {border-color:#345f2c; color:#000}
+.choose-form-reset input {vertical-align:top; width:100%; height:40px; margin:0; padding:0; outline:none; text-align:center; border:1px solid #992600; background:transparent; border-radius:3px; -webkit-appearance:none; cursor:pointer; color:#992600; text-transform:uppercase; font:bold 11px/38px "Open Sans", sans-serif}
+.choose-form-reset input:hover {border-color:#992600; color:#fff; background:#992600}
 
 .choose-content {width:100%; position:relative; overflow:hidden; background:#f7f7f7; margin:0 auto}
 .choose-content-inner {margin:0 -100px}
-.choose-wrap {width:1201px; height:619px; position:relative; margin:0 auto; background:url(../images/map.jpg) no-repeat center}
+.choose-wrap {width:1056px; height:579px; position:relative; margin:0 auto; background:url(../images/map.jpg) no-repeat center}
 
-.choose-map-section-number {position:absolute; width:40px; height:40px; background:#ff6532; text-align:center; color:#fff; font:bold 20px/40px "Roboto Slab", serif; border-radius:30px}
-.choose-map-section-number:before {content:""; display:block; width:3px; height:86px; background:#ff6532; position:absolute; left:50%; top:100%; margin-left:-1px}
-.choose-map-section-number-1:before {height:24px}
-.choose-map-section-number-flats {display:none; position:absolute; right:-13px; top:-13px; width:33px; height:33px; border-radius:17px; color:#fff; text-align:center; font:15px/33px Roboto, sans-serif}
+.choose-map-section-number {position:absolute; width:88px; height:38px; background:#f26538; text-align:center; color:#fff; font-size:20px; line-height:38px; border-radius:3px}
+.choose-map-section-number:before {content:""; display:block; width:3px; height:62px; background:#f26538; position:absolute; left:50%; top:100%; margin-left:-1px}
+.choose-map-section-number-1:before {height:38px}
+.choose-map-section-number-flats {display:none; position:absolute; right:-13px; bottom:-10px; width:27px; height:27px; border-radius:50%; color:#fff; text-align:center; line-height:27px; font-size:15px}
 .choose-map-section-number-flats-1 {background:#629e2a}
 .choose-map-section-number-flats-2 {background:#006cb8}
 .choose-map-section-number-flats-3 {background:#f53d20}
-.choose-map-section-number strong {display:block; width:82px; height:28px; background:#fff; color:#555; font:13px/28px Roboto, sans-serif; position:absolute; left:-21px; top:46px; cursor:pointer}
-.choose-map-section-number strong+strong {top:78px}
+.choose-map-section-number strong {display:block; width:20px; height:20px; background:#fff; color:#000; font-size:13px; line-height:20px; position:absolute; left:0; top:-22px; cursor:pointer; border-radius:3px}
+.choose-map-section-number strong+strong {left:22px}
+.choose-map-section-number strong+strong+strong {left:44px}
+.choose-map-section-number strong+strong+strong+strong {left:66px}
 .choose-map-section-number strong.active {color:#fff; background:#f53d20}
 .choose-map-section-number-1 strong {display:none}
 
@@ -621,9 +623,10 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .choose-map-rooms-item-1 .choose-map-rooms-count {background:#629e2a}
 .choose-map-rooms-item-2 .choose-map-rooms-count {background:#006cb8}
 .choose-map-rooms-item-3 .choose-map-rooms-count {background:#f53d20}
-.choose-map-rooms-text {float:left; padding:10px 0 0 20px}
+.choose-map-rooms-text {float:left; padding:10px 0 0 20px; line-height:20px}
 .choose-map-rooms-title {color:#555}
-.choose-map-rooms-price {font:bold 15px/20px "Roboto Slab", serif; color:#499e3b; margin-top:-1px}
+.choose-map-rooms-price {font-weight:bold; color:#a2c037}
+.choose-map-rooms-price span {font-family:Roboto, serif; font-weight:300}
 
 .choose-wrap .infrastructure-map-section-list {position:fixed; z-index:999}
 .choose-wrap .infrastructure-map-section-list-wrap {left:55px; bottom:auto; top:-38px}
@@ -638,14 +641,14 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .choose-window-inner {display:table; width:1006px; margin:0 auto; position:relative}
 .choose-window-inner:before {content:""; display:block; position:absolute; right:100%; top:0; margin-right:-250px; bottom:0; width:9999px; background:#f3f3f3}
 
-.choose-window-floors {display:table-cell; vertical-align:bottom; width:250px; text-align:center; padding:20px 0 38px 0}
-.choose-window-floors-title {font:bold 15px/20px "Roboto Slab", serif; color:#a2a2a2; position:relative}
+.choose-window-floors {display:table-cell; vertical-align:bottom; width:250px; text-align:center; padding:42px 0 38px 0}
+.choose-window-floors-title {font-weight:bold; color:rgba(37, 37, 37, 0.5); position:relative}
 .choose-window-floors-title:after {content:""; display:block; width:104px; height:5px; margin:31px 0 0 75px; background:#fff}
 .choose-window-floors ul {width:129px; margin:0 0 0 50px; padding:0; position:relative}
 .choose-window-floors li {margin:0; padding:0; position:relative}
 .choose-window-floors li:before {display:none}
 .choose-window-floors li.active:after {content:""; display:block; position:absolute; left:0; right:0; top:-1px; height:1px; background:url(../images/choose-window-floor.png) left -1px}
-.choose-window-floors li.active:before {content:""; display:block; position:absolute; left:auto; right:-30px; top:-1px; width:30px; height:31px; background:url(../images/choose-window-floor-active.png); border-radius:0}
+.choose-window-floors li.active:before {content:""; display:block; position:absolute; left:auto; right:-36px; top:-1px; width:36px; height:31px; background:url(../images/choose-window-floor-active.png); border-radius:0}
 .choose-window-floors li.active:first-child:after {display:none}
 .choose-window-floors li a {display:block; height:30px; text-decoration:none; color:#808080; background:#fff; position:relative; margin:0 0 0 25px}
 .choose-window-floors li a:hover {background:#f7f7f7}
@@ -653,8 +656,8 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .choose-window-floors li a:before {content:""; display:block; position:absolute; left:-25px; right:0; bottom:0; height:1px; background:url(../images/choose-window-floor.png)}
 .choose-window-floors li.active a:before {background-position:left -1px}
 .choose-window-floors li a:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.choose-window-floor {float:left; width:35px; margin:0 2px 0 -35px; text-align:center; font:bold 15px/29px "Roboto Slab", serif; background:#f3f3f3; position:relative}
-.choose-window-floors li.active a .choose-window-floor {padding:1px 0; margin-top:-1px; color:#fff; background:#ff6532}
+.choose-window-floor {float:left; width:35px; margin:0 2px 0 -35px; text-align:center; font:bold 15px/29px "Open Sans Condensed", sans-serif; background:#f3f3f3; position:relative}
+.choose-window-floors li.active a .choose-window-floor {padding:1px 0; margin-top:-1px; color:#fff; background:#f26538}
 .choose-window-floor-count {float:left; width:18px; height:18px; margin:4px 0 0 10px; border:1px solid #000; text-align:center; font-size:13px; line-height:18px}
 .choose-window-floor-count.disabled {opacity:.2}
 .choose-window-floor-count-1 {border-color:#499e3b; color:#499e3b}
@@ -673,20 +676,20 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .choose-window-tab {display:none; padding:0 0 55px 0; vertical-align:top}
 .choose-window-tab.active {display:table-cell}
 
-.choose-window-title {text-align:center; color:#252525; font:bold 25px/30px "Roboto Slab", serif; padding:53px 0 0 0}
-.choose-window-flat {text-align:center; color:#252525; font-size:20px; line-height:25px; padding:12px 0 0 0}
+.choose-window-title {text-align:center; color:#252525; font-weight:bold; font-size:25px; line-height:30px; padding:53px 0 0 0}
 .choose-window-flat-scheme {position:relative; margin:40px 0 0 0; text-align:center}
 .choose-window-flat-scheme-inner {display:inline-block; position:relative; vertical-align:top}
 .choose-window-flat-scheme-inner area.disabled {cursor:default}
 .choose-window-map {display:block; position:relative}
 .choose-window-map-scheme-back {display:block; position:absolute; left:0; top:0; width:100%; height:100%}
-.flat-floor-scheme-floor-title {position:absolute; background:#fff; padding:3px 8px; text-align:center; font-size:15px; line-height:20px; letter-spacing:0; white-space:nowrap}
-.flat-floor-scheme-floor-title strong {display:block; font-family:"Roboto Slab", serif}
+.flat-floor-scheme-floor-title {position:absolute; background:#499e3b; padding:3px 8px; text-align:center; font-size:15px; line-height:20px; letter-spacing:0; white-space:nowrap; color:#fff}
+.flat-floor-scheme-floor-title.disabled {background:#ea3131}
+.flat-floor-scheme-floor-title strong {display:block; font-weight:bold}
 .choose-window-map-scheme {display:block; position:absolute; left:0; top:0; width:100%; height:100%}
 .flat-floor-container .flat-floor-scheme-floor-title {font-size:10px; line-height:14px; padding-left:5px; padding-right:5px}
 
 .choose-results {padding:14px 60px 65px 60px; background:#fff}
-.choose-results h2 {text-align:center; margin-bottom:37px}
+.choose-results h2 {text-align:center; margin-bottom:37px; font-size:30px; line-height:30px; font-weight:bold; color:#252525; text-transform:uppercase}
 .choose-results table {width:100%}
 .choose-results th {white-space:nowrap; padding-left:0; padding-right:0}
 .choose-results td {padding-left:0; padding-right:0}
@@ -774,51 +777,50 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .docs-item-title span {font-weight:bold; color:#121e35}
 .docs-item-date {color:#ef3e23; font-size:12px; padding:1px 0 0 0}
 
-.other-flats {padding:0 0 59px 0; max-width:880px; margin:0 auto}
-.other-flats h3 {text-align:center; margin-bottom:37px}
+.other-flats {padding:0 0 59px 0}
+.other-flats h2 {text-align:center; margin-bottom:37px; text-transform:uppercase; font-weight:bold; font-size:30px}
 .other-flats table {width:100%}
 .other-flats th {white-space:nowrap}
 .other-flats td.price,
 .other-flats td.campaign-links {white-space:nowrap}
 .other-flats td.order {width:1%; white-space:nowrap; padding:0}
 
-.flat-header {position:fixed; left:0; bottom:0; width:100%; z-index:99; background:#629e2a; height:60px}
-.flat-header-title {float:left; width:88px; padding:0 0 0 27px; position:relative; text-align:left; font:bold 15px/60px "Roboto Slab", serif; line-height:60px; height:60px; background:#477f13; color:#fff}
-.flat-header-title:after {content:""; display:block; width:0; height:0; position:absolute; right:-16px; top:50%; margin-top:-28px; border-left:16px solid #477f13; border-top:28px solid transparent; border-bottom:28px solid transparent}
-.flat-header-back {float:right; width:259px; height:60px; background:#477f13; color:#fff; font:bold 15px/60px "Roboto Slab", serif; text-align:center; text-decoration:none}
-.flat-header-back:hover {color:#fff}
+.flat-header {position:fixed; left:0; bottom:0; width:100%; z-index:99; background:#32a643; height:60px}
+.flat-header-title {float:left; width:88px; padding:0 0 0 27px; position:relative; text-align:left; line-height:60px; height:60px; background:#1c8a2c; color:#fff}
+.flat-header-title:after {content:""; display:block; width:0; height:0; position:absolute; right:-16px; top:50%; margin-top:-28px; border-left:16px solid #1c8a2c; border-top:28px solid transparent; border-bottom:28px solid transparent}
+.flat-header-back {float:right; width:259px; height:60px; background:#1c8a2c; color:#fff; line-height:60px; text-align:center; text-decoration:none}
+.flat-header-back:hover {color:#fff; text-decoration:none}
 .flat-header-back img {vertical-align:middle; margin:0 21px 0 0}
 .flat-header-inner {margin:0 259px 0 170px}
 .flat-header-wrap {display:table; width:100%; float:left}
-.flat-header-item {display:table-cell; vertical-align:top; padding:9px 0 0 40px}
+.flat-header-item {display:table-cell; vertical-align:top; padding:17px 0 0 40px; line-height:15px}
 .flat-header-item:first-child {padding-left:0}
-.flat-header-item-title {color:#29490c}
+.flat-header-item-title {color:#29490c; font-size:12px}
 .flat-header-item-value {color:#fff}
 
 .flat-plan {position:relative; overflow:hidden}
-.flat-plan:before {content:""; display:block; width:50%; height:100%; position:absolute; right:0; top:0; background:#ff6533}
-.flat-plan-container {width:860px; margin:0 auto; padding:0 0 0 80px; position:relative; background:#f5f5f5}
+.flat-plan-container {width:860px; margin:0 auto; padding:0 0 0 80px; position:relative}
 .flat-plan-container:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 
 .flat-plan-wrap {display:table; width:100%}
 
 .flat-plan-container h1 {position:relative; z-index:2}
-.flat-plan-container h1 em {display:inline-block; font-style:normal; padding:0 20px 0 0; line-height:64px; margin:-12px 0; background:#f5f5f5}
+.flat-plan-container h1 em {font-style:normal}
 .flat-plan-container h1 span {font-weight:300}
-.flat-subtitle {font:bold 20px/25px "Roboto Slab", serif; color:#499e3b; margin:-30px 0 4px 0}
+.flat-subtitle {font-size:20px; color:#32a643; margin:-30px 0 4px 0}
 .flat-descr {padding:19px 0 40px 0}
 
 .flat-info {display:table-cell; vertical-align:top; width:50%; padding:27px 10px 70px 0; box-sizing:border-box}
 .flat-info-inner {width:380px}
 .flat-info-inner dl {margin:0; padding:0}
 .flat-info-inner dl:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.flat-info-inner dt {float:left; clear:left; color:#b0b0b0; padding:0 0 20px 0; margin:0}
-.flat-info-inner dd {float:right; clear:right; color:#121e35; padding:0 0 20px 0; margin:0}
-.flat-info-inner dd.price {color:#499e3b; font:bold 20px/20px "Roboto Slab", serif}
+.flat-info-inner dt {float:left; clear:left; color:#555555; padding:0 0 20px 0; margin:0; opacity:0.5}
+.flat-info-inner dd {float:right; clear:right; color:#555555; padding:0 0 20px 0; margin:0}
+.flat-info-inner dd.price {color:#32a643; font-size:20px}
 
 .flat-info-inner .order-link,
 .flat-info-inner .detail-link {display:block; text-align:center; padding:0; margin:10px 0 0 0; font-size:15px; height:38px; line-height:38px}
-.flat-info-inner .order-link-flat {display:block; border-color:#ef3e23; padding:0; text-align:center; text-transform:uppercase; background:#ff6532; color:#fff; height:48px; line-height:48px; margin:37px 0 30px 0}
+.flat-info-inner .order-link-flat {display:block; border-color:#f26538; padding:0; text-align:center; text-transform:uppercase; background:#f26538; color:#fff; height:48px; line-height:48px; margin:37px 0 30px 0}
 .flat-info-inner .order-link-flat:hover {background:#df5022; border-color:#df5022}
 
 .flat-likes {text-align:center; padding:44px 0 0 0}
