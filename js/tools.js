@@ -1,3 +1,66 @@
+var html = document.documentElement;
+
+var fontsfile = document.createElement("link");
+fontsfile.href = "css/fonts.css";
+fontsfile.rel = "stylesheet";
+document.head.appendChild(fontsfile);
+
+if (sessionStorage.fontsLoaded) {
+    html.classList.add("fonts-loaded");
+} else {
+    var script = document.createElement("script");
+    script.src = "js/fontfaceobserver.js";
+    script.async = true;
+
+    script.onload = function () {
+        var font700c = new FontFaceObserver("Open Sans Condensed", {
+            weight: "700"
+        });
+        var font300 = new FontFaceObserver("Open Sans", {
+            weight: "300"
+        });
+        var font400 = new FontFaceObserver("Open Sans", {
+            weight: "400"
+        });
+        var font400i = new FontFaceObserver("Open Sans", {
+            weight: "400",
+            style: "italic"
+        });
+        var font700 = new FontFaceObserver("Open Sans", {
+            weight: "400"
+        });
+        var font700i = new FontFaceObserver("Open Sans", {
+            weight: "700",
+            style: "italic"
+        });
+        var font800 = new FontFaceObserver("Open Sans", {
+            weight: "800"
+        });
+        var font300r = new FontFaceObserver("Roboto", {
+            weight: "300"
+        });
+        var font400r = new FontFaceObserver("Roboto", {
+            weight: "400"
+        });
+
+        Promise.all([
+            font700c.load(),
+            font300.load(),
+            font400.load(),
+            font400i.load(),
+            font700.load(),
+            font700i.load(),
+            font800.load(),
+            font300r.load(),
+            font400r.load()
+        ]).then(function () {
+            html.classList.add("fonts-loaded");
+            sessionStorage.fontsLoaded = true;
+        });
+    };
+    document.head.appendChild(script);
+}
+
 var stopUserVideo = false;
 var stopScrollVideo = false;
 var stopScrollGallery = false;
@@ -5,6 +68,8 @@ var stopScrollGallery = false;
 (function($) {
 
     $(document).ready(function() {
+
+        $('.side nav').jScrollPane({autoReinitialise: true});
 
         $('.side-link').click(function(e) {
             $('body').toggleClass('hidden-menu');
@@ -74,8 +139,8 @@ var stopScrollGallery = false;
                 $('.plans-rooms-tab').eq(curIndex).addClass('active');
 
                 var curLink = $('.plans-rooms-tab').eq(curIndex).find('.plans-types li.active a');
-                $('.cocoen').replaceWith('<div class="cocoen"><img src="' + curLink.data('comparebefore') + '" alt="" /><img src="' + curLink.data('compareafter') + '" alt="" /></div>');
-                $('.cocoen').cocoen();
+                $('.plans-compare-images img').eq(0).attr('src', curLink.data('comparebefore'));
+                $('.plans-compare-images img').eq(1).attr('src', curLink.data('compareafter'));
             }
             e.preventDefault();
         });
@@ -92,14 +157,21 @@ var stopScrollGallery = false;
                 curBlock.find('.plans-types-tab.active').removeClass('active');
                 curBlock.find('.plans-types-tab').eq(curIndex).addClass('active');
 
-                $('.cocoen').replaceWith('<div class="cocoen"><img src="' + $(this).data('comparebefore') + '" alt="" /><img src="' + $(this).data('compareafter') + '" alt="" /></div>');
-                $('.cocoen').cocoen();
+                $('.plans-compare-images img').eq(0).attr('src', $(this).data('comparebefore'));
+                $('.plans-compare-images img').eq(1).attr('src', $(this).data('compareafter'));
             }
             e.preventDefault();
         });
 
-        $('.cocoen').each(function() {
-            $(this).cocoen();
+        $('.plans-compare-ctrl-link').click(function(e) {
+            var curIndex = $('.plans-compare-ctrl-link').index($(this));
+            if (!$(this).hasClass('active')) {
+                $('.plans-compare-images img.active').removeClass('active');
+                $('.plans-compare-images img').eq(curIndex).addClass('active');
+                $('.plans-compare-ctrl-link.active').removeClass('active');
+                $(this).addClass('active');
+            }
+            e.preventDefault();
         });
 
         $('.webcam-slider').each(function() {
@@ -1067,7 +1139,6 @@ var stopScrollGallery = false;
                     $('.window-container').removeClass('window-container-load');
                     windowPosition();
                     if ($('.window-euro-compare').length > 0) {
-                        $('.window-euro-compare .cocoen').cocoen();
                         windowPosition();
                     }
                 }

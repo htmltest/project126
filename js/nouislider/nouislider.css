@@ -88,11 +88,11 @@
 .noUi-target {
 }
 .noUi-connect {
-	background: #ef3e23;
+	background: #f26538;
 }
 
 .noUi-target:hover .noUi-connect {
-    background: #3762b5;
+    background: #32a643;
 }
 
 /* Handles and cursors;
@@ -104,13 +104,13 @@
 	cursor: ns-resize;
 }
 .noUi-handle {
-	border: 8px solid #ef3e23;
+	border: 8px solid #f26538;
 	border-radius: 15px;
 	background: #FFF;
 	cursor: pointer;
 }
 .noUi-target:hover .noUi-handle {
-    border-color: #3762b5;
+    border-color: #32a643;
 }
 
 /* Handle stripes;

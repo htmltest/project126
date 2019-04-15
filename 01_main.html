@@ -4,10 +4,7 @@
         <meta charset="utf-8" />
         <title>ЖК «Одинцовские кварталы»</title>
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,400italic,700,700italic,800&amp;subset=latin,cyrillic" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400&text=₽" />
         <link rel="stylesheet" href="css/styles.css" />
-        <link rel="stylesheet" href="js/cocoen/cocoen.min.css" />
         <link rel="stylesheet" href="js/chosen/chosen.css" />
         <link rel="stylesheet" href="js/jscrollpane/jquery.jscrollpane.css" />
         <link rel="stylesheet" href="js/slick/slick.css" />
@@ -16,7 +13,6 @@
         <script src="js/jquery-2.2.2.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/jquery.maskedinput.min.js"></script>
-        <script src="js/cocoen/cocoen.min.js"></script>
         <script src="js/chosen/chosen.jquery.min.js"></script>
         <script src="js/jquery.maphilight.min.js"></script>
         <script src="js/jscrollpane/jquery.mousewheel.js"></script>
@@ -650,11 +646,14 @@
                         <!-- plans filter END -->
 
                         <div class="plans-compare">
-                            <div class="cocoen">
-                                <img src="files/compare-before.png" alt="" />
+                            <div class="plans-compare-images">
+                                <img src="files/compare-before.png" alt="" class="active" />
                                 <img src="files/compare-after.png" alt="" />
                             </div>
-                            <div class="plans-compare-text">Перемещайте курсор влево-вправо и увидите разницу между планировкой и готовым вариантом</div>
+                            <div class="plans-compare-ctrl">
+                                <a href="#" class="plans-compare-ctrl-link active">План</a>
+                                <a href="#" class="plans-compare-ctrl-link">Рендер</a>
+                            </div>
                         </div>
 
                     </div>

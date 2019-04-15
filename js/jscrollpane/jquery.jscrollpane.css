@@ -25,6 +25,11 @@
 	height: 100%;
 }
 
+.side .jspVerticalBar
+{
+    width: 7px;
+}
+
 .jspHorizontalBar
 {
 	position: absolute;
@@ -51,6 +56,11 @@
     border-radius: 3px;
 }
 
+.side .jspTrack
+{
+	background: #dd4513;
+}
+
 .jspDrag
 {
 	background: #ef3e23;
@@ -59,6 +69,11 @@
 	left: 0;
 	cursor: pointer;
     border-radius: 3px;
+}
+
+.side .jspDrag
+{
+	background: #992600;
 }
 
 .jspHorizontalBar .jspTrack,
