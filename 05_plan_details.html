@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ЖК «Одинцовские кварталы»</title>
+
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="js/chosen/chosen.css" />
+        <link rel="stylesheet" href="js/jscrollpane/jquery.jscrollpane.css" />
+        <link rel="stylesheet" href="js/slick/slick.css" />
+        <link rel="stylesheet" href="js/nouislider/nouislider.css">
+
+        <script src="js/jquery-2.2.2.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/jquery.maskedinput.min.js"></script>
+        <script src="js/chosen/chosen.jquery.min.js"></script>
+        <script src="js/jquery.maphilight.min.js"></script>
+        <script src="js/jscrollpane/jquery.mousewheel.js"></script>
+        <script src="js/jscrollpane/jquery.jscrollpane.min.js"></script>
+        <script src="js/modernizr-video.min.js"></script>
+        <script src="js/slick/slick.min.js"></script>
+        <script src="js/nouislider/nouislider.min.js"></script>
+        <script src="js/nouislider/wNumb.js"></script>
+        <script src="js/tools.js"></script>
+
+        <meta name="viewport" content="width=1280" />
+    </head>
+
+    <body>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+
+            <!-- side -->
+            <div class="side">
+
+                <div class="side-container">
+                    <div class="side-content">
+                        <div class="logo"><a href="#"><img src="images/logo.png" alt="" width="165" height="37" /></a></div>
+                        <div class="logo-mini"><a href="#"><img src="images/logo-mini.png" alt="" width="153" height="35" /></a></div>
+
+                        <div class="side-phone">
+                            <div class="side-phone-text">+7 (495) 135-33-65</div>
+                        </div>
+                        <div class="side-phone-mini">
+                            <div class="side-phone-title">наш телефон</div>
+                            <div class="side-phone-text">+7 (495) 135-33-65</div>
+                        </div>
+
+                        <nav>
+                            <ul>
+                                <li><a href="#"><span>О жилом комплексе «Одинцовские кварталы»</span></a></li>
+                                <li><a href="#"><span>Расположение и&nbsp;инфраструктура</span></a></li>
+                                <li><a href="#"><span>Выбор квартиры по&nbsp;параметрам</span></a></li>
+                                <li><a href="#"><span>Акции и&nbsp;спецпредложения</span></a></li>
+                                <li><a href="#"><span>Фотогалерея</span></a></li>
+                                <li><a href="#"><span>Коммерческая недвижимость</span></a></li>
+                                <li><a href="#"><span>О застройщике</span></a></li>
+                                <li><a href="#"><span>Контакты</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <a href="#" class="side-link"></a>
+
+                <a href="#" class="callback-link"></a>
+
+                <div class="callback">
+                    <h3>Обратный звонок</h3>
+                    <form action="windows/success.html" method="post" class="ajaxForm">
+                        <div class="form-label">Телефон</div>
+                        <div class="form-input"><input type="text" name="phone" value="" class="required maskPhone" placeholder="+7 (___) ___-__-__" /></div>
+
+                        <div class="form-label">Имя <strong>/ опционально</strong></div>
+                        <div class="form-input"><input type="text" name="name" value="" /></div>
+
+                        <div class="form-submit"><input type="submit" value="Отправить" /></div>
+                    </form>
+
+                    <a href="#" class="callback-close"></a>
+                </div>
+
+            </div>
+            <!-- side END -->
+
+            <!-- wrapper inner -->
+            <div class="wrapper-inner">
+
+                <!-- content -->
+                <div class="content">
+
+                    <!-- new plans detail -->
+                    <div class="new-plans-detail">
+
+                        <h1>Евро-2 / <span>35,9 М&sup2;</span></h1>
+
+                        <!-- new plans detail inner -->
+                        <div class="new-plans-detail-inner">
+                            <div class="new-plans-detail-text">
+                                <dl>
+                                    <dt>Количество комнат</dt>
+                                    <dd>1</dd>
+
+                                    <dt>Общая площадь</dt>
+                                    <dd>35.9</dd>
+
+                                    <dt>Жилая площадь</dt>
+                                    <dd>30</dd>
+
+                                    <dt>Цена от, руб.</dt>
+                                    <dd class="price">3 630 944</dd>
+                                </dl>
+                            </div>
+                            <div class="new-plans-detail-compare">
+                                <div class="plans-compare">
+                                    <div class="plans-compare-images">
+                                        <img src="files/compare-before.png" alt="" class="active" />
+                                        <img src="files/compare-after.png" alt="" />
+                                    </div>
+                                    <div class="plans-compare-ctrl">
+                                        <a href="#" class="plans-compare-ctrl-link active">План</a>
+                                        <a href="#" class="plans-compare-ctrl-link">Рендер</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- new plans detail inner END -->
+
+                        <!-- other flats END -->
+                        <div class="other-flats">
+                            <h3>Квартир этой планировки в продаже <span>19</span></h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th><a href="#">Комн. <span>&darr;</span></a></th>
+                                        <th>Секция</th>
+                                        <th><a href="#">Этаж <span>&darr;</span></a></th>
+                                        <th><a href="#">Пл., м&sup2; <span>&darr;</span></a></th>
+                                        <th>Акции</th>
+                                        <th><a href="#">Цена, руб. <span>&uarr;</span></a></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">12</td>
+                                        <td style="text-align:center">63,7</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">5 855 847</td>
+                                        <td style="text-align:center"><a href="windows/order-with-error.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">2</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">11</td>
+                                        <td style="text-align:center">63,7</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">5 855 847</td>
+                                        <td style="text-align:center"><a href="windows/order-email.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">3</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">5</td>
+                                        <td style="text-align:center">63,7</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">5 855 847</td>
+                                        <td style="text-align:center"><a href="windows/order.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">3</td>
+                                        <td style="text-align:center">7</td>
+                                        <td style="text-align:center">63,7</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">5 855 847</td>
+                                        <td style="text-align:center"><a href="windows/order.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">2</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">8</td>
+                                        <td style="text-align:center">70,0</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">6 017 913</td>
+                                        <td style="text-align:center"><a href="windows/order.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">25</td>
+                                        <td style="text-align:center">70,0</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">5 958 330</td>
+                                        <td style="text-align:center"><a href="windows/order.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">11</td>
+                                        <td style="text-align:center">70,0</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">5 958 330</td>
+                                        <td style="text-align:center"><a href="windows/order.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">23</td>
+                                        <td style="text-align:center">70,0</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">6 017 913</td>
+                                        <td style="text-align:center"><a href="windows/order.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">12</td>
+                                        <td style="text-align:center">70,0</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">6 017 913</td>
+                                        <td style="text-align:center"><a href="windows/order.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">Дом №6 Подъезд 1</td>
+                                        <td style="text-align:center">1</td>
+                                        <td style="text-align:center">10</td>
+                                        <td style="text-align:center">70,0</td>
+                                        <td class="campaign-links" style="text-align:center">
+                                            <div class="campaign-link campaign-link-discount"><span>Скидка</span></div>
+                                            <div class="campaign-link campaign-link-construction"><span>Ремонт в подарок</span></div>
+                                            <div class="campaign-link campaign-link-gift"><span>Подарок</span></div>
+                                        </td>
+                                        <td class="price" style="text-align:center">5 855 847</td>
+                                        <td style="text-align:center"><a href="windows/order.html" class="order-link">Заявка на просмотр</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- other flats END -->
+
+                    </div>
+                    <!-- new plans detail END -->
+
+                    <!-- new plans side -->
+                    <div class="new-plans-side">
+                        <div class="new-plans-side-title">Похожие планировки</div>
+                        <div class="new-plans-side-list">
+                            <!-- new plans list -->
+                            <div class="new-plans-list">
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-1.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">Евро-1</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-2.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">Евро-2</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-1.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">К-1359</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-1.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">К-1360</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-2.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">Евро-2.1</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-1.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">Евро-4</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-1.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">Евро-1</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-2.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">Евро-2</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-1.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">К-1359</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-1.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">К-1360</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-2.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">Евро-2.1</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                                <a href="#" class="new-plans-item">
+                                    <div class="new-plans-preview"><img src="files/new-plans-1.png" alt="" /></div>
+                                    <div class="new-plans-content">
+                                        <div class="new-plans-title">Евро-4</div>
+                                        <dl>
+                                            <dt>Общая площадь</dt>
+                                            <dd>36.82 м&sup2;</dd>
+
+                                            <dt>Квартир в продаже</dt>
+                                            <dd>9</dd>
+
+                                            <dt>Стоимость</dt>
+                                            <dd><span>от 4 008 535 <em>&#8381;</em></span></dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- new plans list END -->
+                        </div>
+                    </div>
+                    <!-- new plans side END -->
+
+                </div>
+                <!-- content END -->
+
+            </div>
+            <!-- wrapper inner END -->
+        </div>
+        <!-- wrapper END -->
+
+        <footer class="footer-border">
+            <div class="footer-inner">
+
+                <ul class="footer-menu">
+                    <li><a href="#">О комплексе</a></li>
+                    <li><a href="#">Новости</a></li>
+                    <li><a href="#">Проектная декларация</a></li>
+                </ul>
+
+                <div class="footer-email"><a href="#">info@ok.ru</a></div>
+
+                <div class="footer-phone">8-800-775-19-48</div>
+
+                <div class="copyrights">© 2019, ЖК «Одинцовские кварталы». Все права защищены.</div>
+
+                <div class="footer-social">
+                    <a href="#" class="footer-social-vk"></a>
+                    <a href="#" class="footer-social-fb"></a>
+                    <a href="#" class="footer-social-ok"></a>
+                    <a href="#" class="footer-social-gp"></a>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </body>
+</html>
