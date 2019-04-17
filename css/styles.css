@@ -899,10 +899,10 @@ h1+.news-detail-date {margin-top:-19px}
 .choose-window-flat-detail-links .order-link:hover {background:#df5022; border-color:#df5022}
 .choose-window-flat-detail-close {display:block; width:27px; height:27px; position:absolute; right:-13px; top:-14px; border-radius:27px; background:#ff6532 url(../images/choose-window-flat-detail-close.png) no-repeat center}
 .choose-window-flat-detail-close:hover {background-color:#df5022}
-.flat-floor-scheme-hint-item .choose-window-flat-detail {white-space:nowrap; font-size:18px; line-height:20px; font-weight:bold}
-.flat-floor-scheme-hint-item .choose-window-flat-detail-title {font-size:18px; color:#555; margin:0; padding:0}
-.flat-floor-scheme-hint-item .choose-window-flat-detail-title span {color:#32a643}
-.flat-floor-scheme-hint-item .choose-window-flat-detail-price {font-size:18px; line-height:22px; color:#32a643; padding:0}
+.choose-window-flat-detail {white-space:nowrap; font-size:18px; line-height:20px; font-weight:bold}
+.choose-window-flat-detail-title {font-size:18px; color:#555; margin:0; padding:0}
+.choose-window-flat-detail-title span {color:#32a643}
+.choose-window-flat-detail-price {font-size:18px; line-height:22px; color:#32a643; padding:0}
 
 .flat-floor-legend {padding:84px 0 10px 0; text-align:center; font-size:0; line-height:0; letter-spacing:-1px; color:#555; white-space:nowrap}
 .flat-floor-legend-item {display:inline-block; vertical-align:top; margin:0 20px}
@@ -1014,7 +1014,7 @@ h1+.news-detail-date {margin-top:-19px}
 
 .mortgage {background:#f2f3f5}
 .mortgage-menu {height:640px; background:#000 url(../images/mortgage-menu.jpg) no-repeat center; background-size:cover}
-.mortgage-menu h2 {text-align:center; color:#fff; font-size:40px; line-height:40px; margin:0; padding:95px 0 55px 0}
+.mortgage-menu h2 {text-align:center; color:#fff; font-size:40px; line-height:40px; margin:0; padding:95px 0 55px 0; font-weight:800}
 .mortgage-menu-list {position:relative; margin:0 100px}
 .mortgage-menu-list-inner {width:100%; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
 .mortgage-menu-item {display:inline-block; vertical-align:top; width:33.33%}
