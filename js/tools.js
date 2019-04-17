@@ -13,9 +13,6 @@ if (sessionStorage.fontsLoaded) {
     script.async = true;
 
     script.onload = function () {
-        var font700c = new FontFaceObserver("Open Sans Condensed", {
-            weight: "700"
-        });
         var font300 = new FontFaceObserver("Open Sans", {
             weight: "300"
         });
@@ -44,7 +41,6 @@ if (sessionStorage.fontsLoaded) {
         });
 
         Promise.all([
-            font700c.load(),
             font300.load(),
             font400.load(),
             font400i.load(),
@@ -782,9 +778,9 @@ var stopScrollGallery = false;
             }
             var curLeft = e.pageX - $(window).scrollLeft();
             var curTop = e.pageY - $(window).scrollTop();
-            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-right').show().css({'left': curLeft, 'top': curTop});
-            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left + $('.infrastructure-map-section-list-wrap').eq(curIndex).outerWidth() > $(window).width()) {
-                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-right');
+            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').show().css({'left': curLeft, 'top': curTop});
+            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
+                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
             }
         });
 
@@ -793,9 +789,9 @@ var stopScrollGallery = false;
             var curIndex = $('.choose-map-section-number strong').index(curLi);
             var curLeft = e.pageX - $(window).scrollLeft();
             var curTop = e.pageY - $(window).scrollTop();
-            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-right').show().css({'left': curLeft, 'top': curTop});
-            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left + $('.infrastructure-map-section-list-wrap').eq(curIndex).outerWidth() > $(window).width()) {
-                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-right');
+            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').show().css({'left': curLeft, 'top': curTop});
+            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
+                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
             }
         });
 
@@ -807,6 +803,34 @@ var stopScrollGallery = false;
                 $('.choose-map').maphilight();
             }
             $('.infrastructure-map-section-list').hide();
+        });
+
+        $('body').on('mouseover', '.infrastructure-queue-item span', function() {
+            var builds = $(this).data('builds').split(',');
+            for (var i = 0; i < builds.length; i++) {
+                var curIndex = -1;
+                $('.infrastructure-map-section-number').each(function() {
+                    if ($(this).html() == builds[i]) {
+                        curIndex = $('.infrastructure-map-section-number').index($(this));
+                    }
+                });
+                if (curIndex > -1) {
+                    $('.infrastructure-map-section-number').eq(curIndex).addClass('hover');
+                    $('.infrastructure-container area').each(function() {
+                        var curArea = $(this);
+                        if (curArea.data('build') == builds[i]) {
+                            curArea.data('maphilight', {"stroke":false, "fillColor":"fff000", "fillOpacity":0.6, "alwaysOn":true});
+                        }
+                    });
+                }
+            }
+            $('.infrastructure-map').maphilight();
+        });
+
+        $('body').on('mouseout', '.infrastructure-queue-item span', function() {
+            $('.infrastructure-map-section-number').removeClass('hover');
+            $('.infrastructure-container area').data('maphilight', {"stroke":false, "fillColor":"fff000", "fillOpacity":0.6});
+            $('.infrastructure-map').maphilight();
         });
 
         $('.flat-map').maphilight();
@@ -1090,33 +1114,22 @@ var stopScrollGallery = false;
 
         $('body').on('mouseover', '.infrastructure-container area', function(e) {
             var curIndex = $('.infrastructure-container area').index($(this));
-            var curLeft = e.pageX - $('.infrastructure-container').offset().left;
+            var curLeft = e.pageX - $('.infrastructure-container .infrastructure-map').offset().left;
             var curTop = e.pageY - $('.infrastructure-container').offset().top;
-            $('.infrastructure-map-section-list').eq(curIndex).show().css({'left': curLeft, 'top': curTop});
-
-            var curBlock = $('.infrastructure-map-section-list').eq(curIndex).find('.infrastructure-map-section-list-progress');
-            if (curBlock.length == 1) {
-                var curBar = curBlock.find('.infrastructure-map-section-list-progress-bar');
-                var curStatus = curBlock.find('.infrastructure-map-section-list-progress-bar-status');
-                var curText = curBlock.find('.infrastructure-map-section-list-progress-text');
-
-                if (curBlock.find('.infrastructure-map-section-list-progress-bar').hasClass('red')) {
-                    if ((curText.offset().left - curBar.offset().left + curText.width() + 24) > curBar.width()) {
-                        curText.addClass('invert').css({'margin-left': 0});
-                    }
-                } else {
-                    if (curText.width() + 24 > curStatus.width()) {
-                        curText.addClass('invert').css({'margin-left': curStatus.width()});
-                    }
-                }
+            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').show().css({'left': curLeft, 'top': curTop});
+            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
+                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
             }
         });
 
         $('body').on('mousemove', '.infrastructure-container area', function(e) {
             var curIndex = $('.infrastructure-container area').index($(this));
-            var curLeft = e.pageX - $('.infrastructure-container').offset().left;
+            var curLeft = e.pageX - $('.infrastructure-container .infrastructure-map').offset().left;
             var curTop = e.pageY - $('.infrastructure-container').offset().top;
-            $('.infrastructure-map-section-list').eq(curIndex).css({'left': curLeft, 'top': curTop});
+            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').show().css({'left': curLeft, 'top': curTop});
+            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
+                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
+            }
         });
 
         $('body').on('mouseout', '.infrastructure-container area', function(e) {
@@ -1134,7 +1147,6 @@ var stopScrollGallery = false;
 
             if (curProcent < curLimit) {
                 curBlock.find('.infrastructure-map-section-list-progress-bar').addClass('red');
-                curBlock.find('.infrastructure-map-section-list-progress-text').css({'margin-left': curProcent + '%'});
             }
         });
 
@@ -1240,9 +1252,9 @@ var stopScrollGallery = false;
             var curIndex = $('.choose-wrap area').index($(this));
             var curLeft = e.pageX - $(window).scrollLeft();
             var curTop = e.pageY - $(window).scrollTop();
-            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-right').show().css({'left': curLeft, 'top': curTop});
-            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left + $('.infrastructure-map-section-list-wrap').eq(curIndex).outerWidth() > $(window).width()) {
-                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-right');
+            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').show().css({'left': curLeft, 'top': curTop});
+            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
+                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
             }
         });
 
@@ -1250,9 +1262,9 @@ var stopScrollGallery = false;
             var curIndex = $('.choose-wrap area').index($(this));
             var curLeft = e.pageX - $(window).scrollLeft();
             var curTop = e.pageY - $(window).scrollTop();
-            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-right').css({'left': curLeft, 'top': curTop});
-            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left + $('.infrastructure-map-section-list-wrap').eq(curIndex).outerWidth() > $(window).width()) {
-                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-right');
+            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').css({'left': curLeft, 'top': curTop});
+            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
+                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
             }
         });
 
