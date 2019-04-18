@@ -140,6 +140,8 @@ form {margin:20px 0; padding:0}
 .logo {text-align:center; line-height:0; padding:13px 0 22px 0; background:#fff}
 .logo-mini {line-height:0; position:fixed; left:52px; top:0; padding:14px 0 11px 0; width:172px; background:#fff; z-index:1020; transition:all .5s ease}
 .hidden-menu .logo-mini {top:-60px}
+.logo-print {display:none}
+.header-contacts-print {display:none}
 
 .side-phone {text-align:center; color:#252525; text-transform:uppercase; background:#fff; padding:0 0 18px 0}
 .side-phone-text {font-weight:bold; font-size:15px; line-height:20px}
@@ -874,6 +876,8 @@ h1+.news-detail-date {margin-top:-19px}
 
 .flat-likes {text-align:center; padding:44px 0 0 0}
 
+.plans-print {display:none}
+
 .flat-schemes {background:#fafafa; position:relative; margin:0 0 62px 0}
 .flat-schemes:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 
@@ -911,6 +915,7 @@ h1+.news-detail-date {margin-top:-19px}
 .flat-floor-legend-item-title {font-size:12px; line-height:15px; letter-spacing:0; padding:8px 0 0 0}
 
 .flat-builds {float:right; width:640px; height:499px; background:url(../images/flat-builds.jpg); position:relative}
+.flat-builds-print {display:none}
 .flat-builds-content {position:absolute; left:0; top:0}
 .flat-builds-content area {cursor:default}
 .flat-builds-content h3 {position:absolute; left:0; top:38px; margin:0; color:#fff; text-align:center; width:100%; text-shadow:0 1px 0 rgba(18, 30, 53, .5)}
