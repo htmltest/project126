@@ -649,28 +649,72 @@ var stopScrollGallery = false;
             }
         }
 
-        $('body').on('mouseover', '.choose-map-rooms-item-1', function() {
-            $('.choose-map-section-number-flats-1').show();
+        $('.choose-wrap').each(function() {
+            for (var i = 0; i < chooseData.length; i++) {
+                $('.choose-wrap map').append('<area shape="poly" coords="' + chooseData[i].coords + '" href="#" alt="" data-maphilight=\'{"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0}\' />');
+                $('.choose-map-section-numbers').append('<div class="choose-map-section-number" style="left:' + chooseData[i].left + 'px; top:' + chooseData[i].top + 'px"></div>');
+                var newWindow = $('<div class="choose-map-window"><div class="choose-map-window-wrap"><div class="choose-map-window-title">' + chooseData[i].title + '</div><div class="choose-map-window-status">' + chooseData[i].status + '</div><div class="choose-map-window-menu"><ul></ul></div><div class="choose-map-window-tabs"></div><div class="choose-map-window-close"></div></div></div>');
+                var newFlats = chooseData[i].flats;
+                for (var j = 0; j < newFlats.length; j++) {
+                    newWindow.find('.choose-map-window-menu ul').append('<li>' + newFlats[j].room + '-комнатные</li>');
+                    var newTab = $('<div class="choose-map-window-tab choose-map-window-tab-' + newFlats[j].room + '"><div class="choose-map-window-headers"><div class="choose-map-window-header">Подъезд</div><div class="choose-map-window-header">Кол-во</div><div class="choose-map-window-header">Стоимость</div><div class="choose-map-window-header"></div></div></div>');
+                    var newRows = newFlats[j].entrances;
+                    for (var k = 0; k < newRows.length; k++) {
+                        newTab.append('<a href="' + newRows[k].url + '" class="choose-map-window-row"><div class="choose-map-window-row-1">' + newRows[k].entrance + ' подъезд</div><div class="choose-map-window-row-2">' + newRows[k].count + '</div><div class="choose-map-window-row-3">' + newRows[k].price + '</div><div class="choose-map-window-row-4">&rarr;</div></a>');
+                    }
+                                                    
+                    newWindow.find('.choose-map-window-tabs').append(newTab);
+                }
+                $('.choose-map-windows').append(newWindow);
+            }
         });
 
-        $('body').on('mouseout', '.choose-map-rooms-item-1', function() {
-            $('.choose-map-section-number-flats-1').hide();
+        $('body').on('click', '.choose-map-rooms-item-1', function(e) {
+            var curLink = $(this);
+            if (curLink.hasClass('active')) {
+                curLink.removeClass('active');
+                $('.choose-map-section-number-flats-1').removeClass('visible');
+            } else {
+                curLink.addClass('active');
+                $('.choose-map-section-number-flats-1').addClass('visible');
+            }
+            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+            $('.choose-map').maphilight();
+            $('.choose-map-window.visible').removeClass('visible');
+            $('.choose-map-section-number-flats.active').removeClass('active');
+            e.preventDefault();
         });
 
-        $('body').on('mouseover', '.choose-map-rooms-item-2', function() {
-            $('.choose-map-section-number-flats-2').show();
+        $('body').on('click', '.choose-map-rooms-item-2', function(e) {
+            var curLink = $(this);
+            if (curLink.hasClass('active')) {
+                curLink.removeClass('active');
+                $('.choose-map-section-number-flats-2').removeClass('visible');
+            } else {
+                curLink.addClass('active');
+                $('.choose-map-section-number-flats-2').addClass('visible');
+            }
+            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+            $('.choose-map').maphilight();
+            $('.choose-map-window.visible').removeClass('visible');
+            $('.choose-map-section-number-flats.active').removeClass('active');
+            e.preventDefault();
         });
 
-        $('body').on('mouseout', '.choose-map-rooms-item-2', function() {
-            $('.choose-map-section-number-flats-2').hide();
-        });
-
-        $('body').on('mouseover', '.choose-map-rooms-item-3', function() {
-            $('.choose-map-section-number-flats-3').show();
-        });
-
-        $('body').on('mouseout', '.choose-map-rooms-item-3', function() {
-            $('.choose-map-section-number-flats-3').hide();
+        $('body').on('click', '.choose-map-rooms-item-3', function(e) {
+            var curLink = $(this);
+            if (curLink.hasClass('active')) {
+                curLink.removeClass('active');
+                $('.choose-map-section-number-flats-3').removeClass('visible');
+            } else {
+                curLink.addClass('active');
+                $('.choose-map-section-number-flats-3').addClass('visible');
+            }
+            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+            $('.choose-map').maphilight();
+            $('.choose-map-window.visible').removeClass('visible');
+            $('.choose-map-section-number-flats.active').removeClass('active');
+            e.preventDefault();
         });
 
         $('body').on('click', '.choose-form-reset input', function() {
@@ -683,33 +727,127 @@ var stopScrollGallery = false;
             $('body').removeClass('hidden-menu');
         });
 
-        initChoose();
-
-        $('body').on('click', '.choose-content area', function(e) {
-            var curArea = $(this);
-            $('.choose-content area').data('maphilight', {"stroke":2, "strokeColor":"f53d20", "fillColor":"f53d20", "fillOpacity":0.25});
-            curArea.data('maphilight', {"stroke":2, "strokeColor":"f53d20", "fillColor":"f53d20", "fillOpacity":0.25, "alwaysOn":true});
+        $('body').on('click', '.choose-map-window-close', function(e) {
+            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
             $('.choose-map').maphilight();
+            $('.choose-map-window.visible').removeClass('visible');
+            $('.choose-map-section-number-flats.active').removeClass('active');
+        });
 
-            $('.choose-window').addClass('open');
+        $('body').on('click', '.choose-map-section-number-flats', function() {
+            var curItem = $(this);
+            var curIndex = $('.choose-map-section-number').index(curItem.parent());
+            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+            $('.choose-map-window.visible').removeClass('visible');
+            if (curItem.hasClass('active')) {
+                curItem.removeClass('active');
+            } else {
+                $('.choose-map-section-number-flats.active').removeClass('active');
+                curItem.addClass('active');
+                $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+                var curLeft = curItem.parent().offset().left - $('.choose-wrap').offset().left + curItem.parent().outerWidth() / 2;
+                var curTop = curItem.parent().offset().top - $('.choose-wrap').offset().top + curItem.parent().outerHeight() / 2;
+                var curWindow = $('.choose-map-window').eq(curIndex);
+                curWindow.removeClass('side-to-left').addClass('visible').css({'left': curLeft, 'top': curTop});
+                if (curWindow.find('.choose-map-window-wrap').offset().left < $('.choose-content').offset().left) {
+                    curWindow.addClass('side-to-left');
+                }
+                var curSectionNumber = $('.choose-map-section-number').eq(curIndex);
+                var curTabIndex = curSectionNumber.find('.choose-map-section-number-flats').index($(this));
+                curWindow.find('.choose-map-window-menu ul li').eq(curTabIndex).trigger('click');
+            }
+            $('.choose-map').maphilight();
+        });
 
-            var curIndex = $('.choose-content area').index(curArea);
-            $('.choose-map-section-number strong').removeClass('active');
-            $('.choose-map-section-number strong').eq(curIndex).addClass('active');
-
-            $('.choose-window-container').append('<div class="loading"><div class="loading-text">Загрузка данных</div></div>');
-            $.ajax({
-                type: 'POST',
-                url: curArea.attr('href'),
-                dataType: 'html',
-                cache: false
-            }).done(function(html) {
-                $('.choose-window-container').find('.loading').remove();
-                $('.choose-window-container').html(html);
-                $('.choose-window-map').maphilight();
-            });
-
+        $('body').on('click', '.choose-wrap area', function(e) {
             e.preventDefault();
+        });
+
+        $('body').on('click', '.choose-map-window-row', function(e) {
+            var curLink = $(this);
+            if (!curLink.hasClass('disabled') && !curLink.hasClass('active')) {
+                $('.choose-map-window-row.active').removeClass('active');
+                curLink.addClass('active');
+                $('.choose-window').addClass('open');
+
+                $('.choose-window-container').append('<div class="loading"><div class="loading-text">Загрузка данных</div></div>');
+                $.ajax({
+                    type: 'POST',
+                    url: curLink.attr('href'),
+                    dataType: 'html',
+                    cache: false
+                }).done(function(html) {
+                    $('.choose-window-container').find('.loading').remove();
+                    $('.choose-window-container').html(html);
+                    $('.choose-window-map').maphilight();
+                });
+
+            }
+            e.preventDefault();
+        });
+
+        $('body').on('click', '.choose-map-window-menu ul li', function(e) {
+            var curLi = $(this);
+            if (!curLi.hasClass('active')) {
+                var curWindow = $(this).parents().filter('.choose-map-window');
+                curWindow.find('.choose-map-window-menu ul li.active').removeClass('active');
+                curLi.addClass('active');
+                var curIndex = curWindow.find('.choose-map-window-menu ul li').index(curLi);
+                curWindow.find('.choose-map-window-tab.active').removeClass('active');
+                curWindow.find('.choose-map-window-tab').eq(curIndex).addClass('active');
+                var curWindowIndex = $('.choose-map-window').index(curWindow);
+                var curSectionNumber = $('.choose-map-section-number').eq(curWindowIndex);
+                curSectionNumber.find('.choose-map-section-number-flats.active').removeClass('active');
+                curSectionNumber.find('.choose-map-section-number-flats').eq(curIndex).addClass('active');
+            }
+        });
+
+        $('.choose-map-window-row').each(function() {
+            if ($(this).find('.choose-map-window-row-2').html() == '0') {
+                $(this).addClass('disabled');
+            }
+        });
+
+        $('.choose-map-window').each(function() {
+            var curWindow = $(this);
+            var curIndex = $('.choose-map-window').index(curWindow);
+            var curSection = $('.choose-map-section-number').eq(curIndex);
+            curWindow.find('.choose-map-window-tab').each(function() {
+                var curTab = $(this);
+                var curSumm = 0;
+                curTab.find('.choose-map-window-row-2').each(function() {
+                    curSumm += Number($(this).text());
+                });
+                var curSectionClass = 'choose-map-section-number-flats-1';
+                if (curTab.hasClass('choose-map-window-tab-2')) {
+                    curSectionClass = 'choose-map-section-number-flats-2';
+                }
+                if (curTab.hasClass('choose-map-window-tab-3')) {
+                    curSectionClass = 'choose-map-section-number-flats-3';
+                }
+
+                curSection.append('<div class="choose-map-section-number-flats ' + curSectionClass + '">' + curSumm + '</div>');
+            });
+        });
+
+        $('.choose-map-rooms').each(function() {
+            var curSumm1 = 0;
+            $('.choose-map-section-number-flats-1').each(function() {
+                curSumm1 += Number($(this).text());
+            });
+            $('.choose-map-rooms-item-1 .choose-map-rooms-count').html(curSumm1);
+
+            var curSumm2 = 0;
+            $('.choose-map-section-number-flats-2').each(function() {
+                curSumm2 += Number($(this).text());
+            });
+            $('.choose-map-rooms-item-2 .choose-map-rooms-count').html(curSumm2);
+
+            var curSumm3 = 0;
+            $('.choose-map-section-number-flats-3').each(function() {
+                curSumm3 += Number($(this).text());
+            });
+            $('.choose-map-rooms-item-3 .choose-map-rooms-count').html(curSumm3);
         });
 
         $('body').on('click', '.choose-window-floors a', function(e) {
@@ -760,49 +898,6 @@ var stopScrollGallery = false;
             var curBlock = $(this).parents().filter('.choose-window-flat-scheme');
             var curIndex = curBlock.find('.choose-window-map-scheme+map area').index($(this));
             curBlock.find('.flat-floor-scheme-hint-item').eq(curIndex).show().css({'left': e.pageX - $(window).scrollLeft(), 'top': e.pageY - $(window).scrollTop()});
-        });
-
-        $('body').on('click', '.choose-map-section-number strong', function(e) {
-            var curLi = $(this);
-            var curIndex = $('.choose-map-section-number strong').index(curLi);
-            $('.choose-content area').eq(curIndex).click();
-            e.preventDefault();
-        });
-
-        $('body').on('mouseover', '.choose-map-section-number strong', function(e) {
-            var curLi = $(this);
-            var curIndex = $('.choose-map-section-number strong').index(curLi);
-            if (!curLi.hasClass('active')) {
-                $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":2, "strokeColor":"f53d20", "fillColor":"f53d20", "fillOpacity":0.25, "alwaysOn":true});
-                $('.choose-map').maphilight();
-            }
-            var curLeft = e.pageX - $(window).scrollLeft();
-            var curTop = e.pageY - $(window).scrollTop();
-            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').show().css({'left': curLeft, 'top': curTop});
-            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
-                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
-            }
-        });
-
-        $('body').on('mousemove', '.choose-map-section-number strong', function(e) {
-            var curLi = $(this);
-            var curIndex = $('.choose-map-section-number strong').index(curLi);
-            var curLeft = e.pageX - $(window).scrollLeft();
-            var curTop = e.pageY - $(window).scrollTop();
-            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').show().css({'left': curLeft, 'top': curTop});
-            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
-                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
-            }
-        });
-
-        $('body').on('mouseout', '.choose-map-section-number strong', function(e) {
-            var curLi = $(this);
-            if (!curLi.hasClass('active')) {
-                var curIndex = $('.choose-map-section-number strong').index(curLi);
-                $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":2, "strokeColor":"f53d20", "fillColor":"f53d20", "fillOpacity":0.25});
-                $('.choose-map').maphilight();
-            }
-            $('.infrastructure-map-section-list').hide();
         });
 
         $('body').on('mouseover', '.infrastructure-queue-item span', function() {
@@ -1248,30 +1343,6 @@ var stopScrollGallery = false;
             e.preventDefault();
         });
 
-        $('body').on('mouseover', '.choose-wrap area', function(e) {
-            var curIndex = $('.choose-wrap area').index($(this));
-            var curLeft = e.pageX - $(window).scrollLeft();
-            var curTop = e.pageY - $(window).scrollTop();
-            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').show().css({'left': curLeft, 'top': curTop});
-            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
-                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
-            }
-        });
-
-        $('body').on('mousemove', '.choose-wrap area', function(e) {
-            var curIndex = $('.choose-wrap area').index($(this));
-            var curLeft = e.pageX - $(window).scrollLeft();
-            var curTop = e.pageY - $(window).scrollTop();
-            $('.infrastructure-map-section-list').eq(curIndex).removeClass('infrastructure-map-section-list-left').css({'left': curLeft, 'top': curTop});
-            if ($('.infrastructure-map-section-list-wrap').eq(curIndex).offset().left < $('.infrastructure-container .infrastructure-map').offset().left) {
-                $('.infrastructure-map-section-list').eq(curIndex).addClass('infrastructure-map-section-list-left');
-            }
-        });
-
-        $('body').on('mouseout', '.choose-wrap area', function(e) {
-            $('.infrastructure-map-section-list').hide();
-        });
-
         $('.rules-item a').click(function(e) {
             var curBlock = $($(this).attr('href'));
             if (curBlock.length > 0) {
@@ -1576,8 +1647,4 @@ function initForm() {
             });
         }
     });
-}
-
-function initChoose() {
-    $('.choose-map').maphilight();
 }
