@@ -652,7 +652,7 @@ var stopScrollGallery = false;
         $('.choose-wrap').each(function() {
             for (var i = 0; i < chooseData.length; i++) {
                 $('.choose-wrap map').append('<area shape="poly" coords="' + chooseData[i].coords + '" href="#" alt="" data-maphilight=\'{"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0}\' />');
-                $('.choose-map-section-numbers').append('<div class="choose-map-section-number" style="left:' + chooseData[i].left + 'px; top:' + chooseData[i].top + 'px"></div>');
+                $('.choose-map-section-numbers').append('<div class="choose-map-section-number" style="left:' + chooseData[i].left + 'px; top:' + chooseData[i].top + 'px"><div class="choose-map-section-number-title">' + chooseData[i].number + '</div></div>');
                 var newWindow = $('<div class="choose-map-window"><div class="choose-map-window-wrap"><div class="choose-map-window-title">' + chooseData[i].title + '</div><div class="choose-map-window-status">' + chooseData[i].status + '</div><div class="choose-map-window-menu"><ul></ul></div><div class="choose-map-window-tabs"></div><div class="choose-map-window-close"></div></div></div>');
                 var newFlats = chooseData[i].flats;
                 for (var j = 0; j < newFlats.length; j++) {
@@ -660,9 +660,13 @@ var stopScrollGallery = false;
                     var newTab = $('<div class="choose-map-window-tab choose-map-window-tab-' + newFlats[j].room + '"><div class="choose-map-window-headers"><div class="choose-map-window-header">Подъезд</div><div class="choose-map-window-header">Кол-во</div><div class="choose-map-window-header">Стоимость</div><div class="choose-map-window-header"></div></div></div>');
                     var newRows = newFlats[j].entrances;
                     for (var k = 0; k < newRows.length; k++) {
-                        newTab.append('<a href="' + newRows[k].url + '" class="choose-map-window-row"><div class="choose-map-window-row-1">' + newRows[k].entrance + ' подъезд</div><div class="choose-map-window-row-2">' + newRows[k].count + '</div><div class="choose-map-window-row-3">' + newRows[k].price + '</div><div class="choose-map-window-row-4">&rarr;</div></a>');
+                        var activeRowClass = '';
+                        if (typeof (newRows[k].isActive) != 'undefined' && newRows[k].isActive) {
+                            activeRowClass = ' active';
+                        }
+                        newTab.append('<a href="' + newRows[k].url + '" class="choose-map-window-row' + activeRowClass + '"><div class="choose-map-window-row-1">' + newRows[k].entrance + ' подъезд</div><div class="choose-map-window-row-2">' + newRows[k].count + '</div><div class="choose-map-window-row-3">' + newRows[k].price + '</div><div class="choose-map-window-row-4">&rarr;</div></a>');
                     }
-                                                    
+
                     newWindow.find('.choose-map-window-tabs').append(newTab);
                 }
                 $('.choose-map-windows').append(newWindow);
@@ -763,29 +767,6 @@ var stopScrollGallery = false;
             e.preventDefault();
         });
 
-        $('body').on('click', '.choose-map-window-row', function(e) {
-            var curLink = $(this);
-            if (!curLink.hasClass('disabled') && !curLink.hasClass('active')) {
-                $('.choose-map-window-row.active').removeClass('active');
-                curLink.addClass('active');
-                $('.choose-window').addClass('open');
-
-                $('.choose-window-container').append('<div class="loading"><div class="loading-text">Загрузка данных</div></div>');
-                $.ajax({
-                    type: 'POST',
-                    url: curLink.attr('href'),
-                    dataType: 'html',
-                    cache: false
-                }).done(function(html) {
-                    $('.choose-window-container').find('.loading').remove();
-                    $('.choose-window-container').html(html);
-                    $('.choose-window-map').maphilight();
-                });
-
-            }
-            e.preventDefault();
-        });
-
         $('body').on('click', '.choose-map-window-menu ul li', function(e) {
             var curLi = $(this);
             if (!curLi.hasClass('active')) {
@@ -826,7 +807,7 @@ var stopScrollGallery = false;
                     curSectionClass = 'choose-map-section-number-flats-3';
                 }
 
-                curSection.append('<div class="choose-map-section-number-flats ' + curSectionClass + '">' + curSumm + '</div>');
+                curSection.find('.choose-map-section-number-title').before('<div class="choose-map-section-number-flats ' + curSectionClass + '">' + curSumm + '</div>');
             });
         });
 
@@ -848,6 +829,29 @@ var stopScrollGallery = false;
                 curSumm3 += Number($(this).text());
             });
             $('.choose-map-rooms-item-3 .choose-map-rooms-count').html(curSumm3);
+        });
+
+        $('.choose-map-window-row.active').each(function() {
+            var curLink = $(this);
+            var curTab = curLink.parents().filter('.choose-map-window-tab');
+            curTab.addClass('active');
+            var curWindow = curTab.parents().filter('.choose-map-window');
+            var curTabIndex = curWindow.find('.choose-map-window-tab').index(curTab);
+            curWindow.find('.choose-map-window-menu ul li').eq(curTabIndex).addClass('active');
+            var curRooms = 1;
+            if (curTab.hasClass('choose-map-window-tab-2')) {
+                curRooms = 2;
+            }
+            if (curTab.hasClass('choose-map-window-tab-3')) {
+                curRooms = 3;
+            }
+            $('.choose-map-rooms-item-' + curRooms).each(function() {
+                var curLink = $(this);
+                curLink.addClass('active');
+                $('.choose-map-section-number-flats-' + curRooms).addClass('visible');
+            });
+            var curWindowIndex = $('.choose-map-window').index(curWindow);
+            $('.choose-map-section-number').eq(curWindowIndex).find('.choose-map-section-number-flats-' + curRooms).trigger('click');
         });
 
         $('body').on('click', '.choose-window-floors a', function(e) {
