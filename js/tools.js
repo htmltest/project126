@@ -654,65 +654,42 @@ var stopScrollGallery = false;
                 $('.choose-wrap map').append('<area shape="poly" coords="' + chooseData[i].coords + '" href="#" alt="" data-maphilight=\'{"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0}\' />');
                 $('.choose-map-section-numbers').append('<div class="choose-map-section-number" style="left:' + chooseData[i].left + 'px; top:' + chooseData[i].top + 'px"><div class="choose-map-section-number-title">' + chooseData[i].number + '</div></div>');
                 var newWindow = $('<div class="choose-map-window"><div class="choose-map-window-wrap"><div class="choose-map-window-title">' + chooseData[i].title + '</div><div class="choose-map-window-status">' + chooseData[i].status + '</div><div class="choose-map-window-menu"><ul></ul></div><div class="choose-map-window-tabs"></div><div class="choose-map-window-close"></div></div></div>');
-                var newFlats = chooseData[i].flats;
-                for (var j = 0; j < newFlats.length; j++) {
-                    newWindow.find('.choose-map-window-menu ul').append('<li>' + newFlats[j].room + '-комнатные</li>');
-                    var newTab = $('<div class="choose-map-window-tab choose-map-window-tab-' + newFlats[j].room + '"><div class="choose-map-window-headers"><div class="choose-map-window-header">Подъезд</div><div class="choose-map-window-header">Кол-во</div><div class="choose-map-window-header">Стоимость</div><div class="choose-map-window-header"></div></div></div>');
-                    var newRows = newFlats[j].entrances;
-                    for (var k = 0; k < newRows.length; k++) {
-                        var activeRowClass = '';
-                        if (typeof (newRows[k].isActive) != 'undefined' && newRows[k].isActive) {
-                            activeRowClass = ' active';
+                if (typeof (chooseData[i].flats) != 'undefined') {
+                    var newFlats = chooseData[i].flats;
+                    for (var j = 0; j < newFlats.length; j++) {
+                        newWindow.find('.choose-map-window-menu ul').append('<li>' + newFlats[j].room + '-комнатные</li>');
+                        var newTab = $('<div class="choose-map-window-tab choose-map-window-tab-' + newFlats[j].room + '"><div class="choose-map-window-headers"><div class="choose-map-window-header">Секция</div><div class="choose-map-window-header">Кол-во</div><div class="choose-map-window-header">Стоимость</div><div class="choose-map-window-header"></div></div></div>');
+                        var newRows = newFlats[j].entrances;
+                        for (var k = 0; k < newRows.length; k++) {
+                            var activeRowClass = '';
+                            if (typeof (newRows[k].isActive) != 'undefined' && newRows[k].isActive) {
+                                activeRowClass = ' active';
+                            }
+                            newTab.append('<a href="' + newRows[k].url + '" class="choose-map-window-row' + activeRowClass + '"><div class="choose-map-window-row-1">' + newRows[k].entrance + ' секция</div><div class="choose-map-window-row-2">' + newRows[k].count + '</div><div class="choose-map-window-row-3">' + newRows[k].price + '</div><div class="choose-map-window-row-4">&rarr;</div></a>');
                         }
-                        newTab.append('<a href="' + newRows[k].url + '" class="choose-map-window-row' + activeRowClass + '"><div class="choose-map-window-row-1">' + newRows[k].entrance + ' подъезд</div><div class="choose-map-window-row-2">' + newRows[k].count + '</div><div class="choose-map-window-row-3">' + newRows[k].price + '</div><div class="choose-map-window-row-4">&rarr;</div></a>');
-                    }
 
-                    newWindow.find('.choose-map-window-tabs').append(newTab);
+                        newWindow.find('.choose-map-window-tabs').append(newTab);
+                    }
                 }
                 $('.choose-map-windows').append(newWindow);
             }
         });
 
-        $('body').on('click', '.choose-map-rooms-item-1', function(e) {
+        $('body').on('click', '.choose-map-rooms-item a', function(e) {
             var curLink = $(this);
-            if (curLink.hasClass('active')) {
-                curLink.removeClass('active');
-                $('.choose-map-section-number-flats-1').removeClass('visible');
-            } else {
-                curLink.addClass('active');
-                $('.choose-map-section-number-flats-1').addClass('visible');
+            var curRooms = 1;
+            if (curLink.hasClass('choose-map-rooms-item-2')) {
+                curRooms = 2;
             }
-            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
-            $('.choose-map').maphilight();
-            $('.choose-map-window.visible').removeClass('visible');
-            $('.choose-map-section-number-flats.active').removeClass('active');
-            e.preventDefault();
-        });
-
-        $('body').on('click', '.choose-map-rooms-item-2', function(e) {
-            var curLink = $(this);
-            if (curLink.hasClass('active')) {
-                curLink.removeClass('active');
-                $('.choose-map-section-number-flats-2').removeClass('visible');
-            } else {
-                curLink.addClass('active');
-                $('.choose-map-section-number-flats-2').addClass('visible');
+            if (curLink.hasClass('choose-map-rooms-item-3')) {
+                curRooms = 3;
             }
-            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
-            $('.choose-map').maphilight();
-            $('.choose-map-window.visible').removeClass('visible');
-            $('.choose-map-section-number-flats.active').removeClass('active');
-            e.preventDefault();
-        });
-
-        $('body').on('click', '.choose-map-rooms-item-3', function(e) {
-            var curLink = $(this);
             if (curLink.hasClass('active')) {
                 curLink.removeClass('active');
-                $('.choose-map-section-number-flats-3').removeClass('visible');
+                $('.choose-map-section-number-flats-' + curRooms).removeClass('visible');
             } else {
                 curLink.addClass('active');
-                $('.choose-map-section-number-flats-3').addClass('visible');
+                $('.choose-map-section-number-flats-' + curRooms).addClass('visible');
             }
             $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
             $('.choose-map').maphilight();
@@ -871,6 +848,18 @@ var stopScrollGallery = false;
             });
             var curWindowIndex = $('.choose-map-window').index(curWindow);
             $('.choose-map-section-number').eq(curWindowIndex).find('.choose-map-section-number-flats-' + curRooms).trigger('click');
+        });
+
+        $('.choose-map-rooms-item a.active').each(function(e) {
+            var curLink = $(this);
+            var curRooms = 1;
+            if (curLink.hasClass('choose-map-rooms-item-2')) {
+                curRooms = 2;
+            }
+            if (curLink.hasClass('choose-map-rooms-item-3')) {
+                curRooms = 3;
+            }
+            $('.choose-map-section-number-flats-' + curRooms).addClass('visible');
         });
 
         $('body').on('click', '.choose-window-floors a', function(e) {
