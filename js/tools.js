@@ -989,6 +989,9 @@ var stopScrollGallery = false;
             curSlider.data('disableAnimation', true);
 
             var pageSize = 5;
+            if (curSlider.parents().filter('.photo-gallery-inside').length > 0) {
+                pageSize = 3;
+            }
             var curPages = Math.ceil(curSlider.find('li').length / pageSize);
             if (curPages > 1) {
                 var curHTML = '';
@@ -997,17 +1000,38 @@ var stopScrollGallery = false;
                 }
                 curSlider.find('.photo-gallery-ctrl').html(curHTML);
                 curSlider.find('.photo-gallery-ctrl a:first-child').addClass('active');
+            } else {
+                curSlider.parents().filter('.photo-gallery-inside').find('.photo-gallery-inside-next, .photo-gallery-inside-prev').hide();
             }
         });
 
         $('.photo-gallery-item').on('click', '.photo-gallery-ctrl a', function(e) {
             var pageSize = 5;
+            if ($(this).parents().filter('.photo-gallery-inside').length > 0) {
+                pageSize = 3;
+            }
             var curList = $(this).parents().filter('.photo-gallery-item');
             var curIndex = curList.find('.photo-gallery-ctrl a').index($(this));
             curList.find('li:first').stop(true, true);
             curList.find('.photo-gallery-ctrl a.active').removeClass('active');
             $(this).addClass('active');
             curList.find('li:first').animate({'margin-left': -curIndex * pageSize * curList.find('li:first').outerWidth()});
+            e.preventDefault();
+        });
+
+        $('.photo-gallery-inside-next').click(function(e) {
+            var curGallery = $(this).parents().filter('.photo-gallery');
+            var curDot = curGallery.find('.photo-gallery-ctrl a.active');
+            curDot.next().trigger('click');
+
+            e.preventDefault();
+        });
+
+        $('.photo-gallery-inside-prev').click(function(e) {
+            var curGallery = $(this).parents().filter('.photo-gallery');
+            var curDot = curGallery.find('.photo-gallery-ctrl a.active');
+            curDot.prev().trigger('click');
+
             e.preventDefault();
         });
 

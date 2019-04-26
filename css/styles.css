@@ -1028,6 +1028,9 @@ h1+.news-detail-date {margin-top:-19px}
 .photo-gallery-content ul li a:hover {opacity:.5}
 .photo-gallery-content ul li img {width:100%}
 
+.photo-gallery-inside .photo-gallery-inner {padding-left:110px; padding-right:110px; max-width:none}
+.photo-gallery-inside .photo-gallery-content ul li {width:33.33%}
+
 .photo-gallery-prev,
 .photo-gallery-next {display:block; position:absolute; top:148px; width:60px; height:60px; background:#f26538; font:20px/60px "Open Sans", sans-serif; color:#fff; text-align:center; text-decoration:none; border-radius:60px}
 .photo-gallery-prev:before,
@@ -1039,12 +1042,23 @@ h1+.news-detail-date {margin-top:-19px}
 .photo-gallery-prev:hover,
 .photo-gallery-next:hover {background:#df5022; text-decoration:none}
 
+.photo-gallery-inside-prev,
+.photo-gallery-inside-next {display:block; position:absolute; top:50%; margin-top:-48px; width:60px; height:60px; background:#f26538; font:20px/60px "Open Sans", sans-serif; color:#fff; text-align:center; text-decoration:none; border-radius:60px}
+.photo-gallery-inside-prev:before,
+.photo-gallery-inside-next:after {content:""; display:inline-block; vertical-align:middle; width:9px; height:15px; background:url(../images/photo-gallery.png)}
+.photo-gallery-inside-prev:before {margin:-4px 6px 0 0}
+.photo-gallery-inside-next:after {margin:-4px 0 0 6px; background-position:-9px top}
+.photo-gallery-inside-prev {left:20px}
+.photo-gallery-inside-next {right:20px}
+.photo-gallery-inside-prev:hover,
+.photo-gallery-inside-next:hover {background:#df5022; text-decoration:none}
+
 .photo-gallery-ctrl {padding:25px 0 0 0; text-align:center; height:9px}
 .photo-gallery-ctrl a {display:inline-block; vertical-align:middle; width:9px; height:9px; border-radius:10px; background:#d1d5db; margin:0 0 0 11px}
 .photo-gallery-ctrl a:first-child {margin:0}
 .photo-gallery-ctrl a.active {background:#ff6532}
 
-.item-gallery {position:fixed; left:-9999px; top:0; width:100%; height:100%; z-index:99997; overflow:auto; background:rgba(73, 156, 60, .85)}
+.item-gallery {position:fixed; left:-9999px; top:0; width:100%; height:100%; z-index:99997; overflow:auto; background:rgba(255, 255, 255, .95)}
 .item-gallery a:after {display:none}
 .item-gallery-open {left:0}
 .item-gallery-container {position:relative; width:1080px; margin:0 auto}
