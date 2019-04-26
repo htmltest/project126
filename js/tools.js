@@ -827,7 +827,7 @@ var stopScrollGallery = false;
             $('.choose-map-rooms-item-3 .choose-map-rooms-count').html(curSumm3);
         });
 
-        $('.choose-map-window-row.active').each(function() {
+        $('.choose-map-window-row.active').eq(0).each(function() {
             var curLink = $(this);
             var curTab = curLink.parents().filter('.choose-map-window-tab');
             curTab.addClass('active');
