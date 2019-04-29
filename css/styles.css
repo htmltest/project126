@@ -172,8 +172,8 @@ nav span {display:table-cell; vertical-align:middle; height:80px; padding:0 20px
 .callback {display:none; position:absolute; right:-744px; top:0; background:#f26538; z-index:98; width:310px; padding:15px 20px 25px 20px; color:#fff}
 .hidden-menu .callback {right:-350px; top:60px}
 .callback h3 {color:#fff; margin-top:0; padding:0 0 0 46px}
-.callback .form-label {font-weight:bold; color:#fff; opacity:0.5; padding-top:12px}
-.callback .form-label strong {color:#fff; font-weight:bold}
+.callback .form-label {font-weight:bold; color:#fff; padding-top:12px}
+.callback .form-label strong {color:#fff; font-weight:bold; opacity:0.5}
 .callback .form-input input {border:none}
 .callback .form-input label.error {background:#121e35; right:auto; left:100%; margin:0 0 0 27px}
 .callback .form-input label.error:after {right:auto; left:-11px; border-right:11px solid #121e35; border-left:none}
@@ -652,6 +652,7 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .choose-form-reset input:hover {border-color:#992600; color:#fff; background:#992600}
 
 .choose-content {width:100%; position:relative; z-index:2; background:#f7f7f7; margin:0 auto}
+.main-infrastructure .choose-content {background:transparent; margin-bottom:70px}
 .choose-content-inner {margin:0 -100px}
 .choose-wrap {width:1056px; height:756px; position:relative; margin:0 auto; background:url(../images/map.jpg) no-repeat center}
 .choose-wrap area {cursor:default}
@@ -1149,10 +1150,10 @@ h1+.news-detail-date {margin-top:-19px}
 
 .mortgage-results-form {margin:21px 0 0 0; position:relative}
 .mortgage-results-form-2 {margin:17px 0 0 0}
-.mortgage-results-form .detail-link {display:block; height:48px; text-transform:uppercase; font-size:15px; line-height:48px; font-weight:bold; text-align:center; border-color:#c6cad2; color:#1b2c4d}
+.mortgage-results-form .detail-link {display:block; height:48px; text-transform:uppercase; font-size:15px; line-height:48px; font-weight:bold; text-align:center; border-color:#f26538; color:#252525}
 .mortgage-results-form .detail-link:hover {color:#fff; border-color:#f26538; background:#f26538}
-.mortgage-results-form-2 .detail-link {color:#fff; background:#ef3e23; border-color:#ef3e23}
-.mortgage-results-form-2 .detail-link:hover {border-color:#f26538; background:#f26538}
+.mortgage-results-form-2 .detail-link {color:#fff; background:#f26538; border-color:#f26538}
+.mortgage-results-form-2 .detail-link:hover {border-color:#df5022; background:#df5022}
 .mortgage-results-form form {margin:0; padding:0; display:none; background:#fff; z-index:99; position:absolute; left:-40px; top:-5px; right:-40px; padding:22px 40px 24px 40px; box-shadow:0 10px 25px rgba(27, 44, 77, .35)}
 .mortgage-results-form.open form {display:block}
 .mortgage-results-form-close {display:block; z-index:2; position:absolute; right:-15px; top:-15px; width:30px; height:30px; background:#ef3e23 url(../images/window-close.png) no-repeat center; border-radius:15px}
