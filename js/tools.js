@@ -946,6 +946,8 @@ var stopScrollGallery = false;
             e.preventDefault();
         });
 
+        $('.choose-window-map').maphilight();
+
         $('.flat-floor-img').maphilight();
 
         $('.flat-floor-content area.disabled').click(function(e) {
@@ -1393,6 +1395,20 @@ var stopScrollGallery = false;
                 }
                 e.preventDefault();
             }
+        });
+
+        $('body').on('click', 'tr[data-href]', function() {
+            window.location = $(this).attr('data-href');
+        });
+
+        $('body').on('mouseover', 'tr[data-href] a', function() {
+            $('body').off('click', 'tr[data-href]');
+        });
+
+        $('body').on('mouseout', 'tr[data-href] a', function() {
+            $('body').on('click', 'tr[data-href]', function() {
+                window.location = $(this).attr('data-href');
+            });
         });
 
     });

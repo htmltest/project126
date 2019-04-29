@@ -27,6 +27,7 @@ ol li:before {content:counter(point)'.'; counter-increment:point 1; left:0; posi
 .wrapper th a {text-decoration:none; color:#818181}
 .wrapper th a span {font-family:arial, helvetica, sans-serif}
 .wrapper td {vertical-align:middle; border-top:1px solid #e6e6e6; padding:21px 0 22px 30px}
+.wrapper tbody tr:hover {background:#fff8f6; cursor:pointer}
 .wrapper tr:first-child td {border-top:2px solid #32a643}
 .wrapper td.price {font-weight:bold; color:#252525; font-size:18px}
 .wrapper td.price a {color:#252525; text-decoration:none}
@@ -137,13 +138,15 @@ form {margin:20px 0; padding:0}
 .hidden-menu .side-container {margin-left:0}
 .side-content {width:200px}
 
-.logo {text-align:center; line-height:0; padding:13px 0 22px 0; background:#fff}
+.logo {text-align:center; line-height:0; padding:13px 0 22px 0; background:#fff; position:relative}
+.logo:after {content:""; display:block; position:absolute; left:0; top:60px; right:1px; height:1px; background:#e0e0e0}
 .logo-mini {line-height:0; position:fixed; left:52px; top:0; padding:14px 0 11px 0; width:172px; background:#fff; z-index:1020; transition:all .5s ease}
+.logo-mini:after {content:""; display:block; position:absolute; left:-52px; top:59px; right:1px; height:1px; background:#e0e0e0}
 .hidden-menu .logo-mini {top:-60px}
 .logo-print {display:none}
 .header-contacts-print {display:none}
 
-.side-phone {text-align:center; color:#252525; text-transform:uppercase; background:#fff; padding:0 0 18px 0}
+.side-phone {text-align:center; color:#252525; text-transform:uppercase; background:#fff; padding:5px 0 18px 0}
 .side-phone-text {font-weight:bold; font-size:15px; line-height:20px}
 
 .side-phone-mini {position:fixed; left:224px; top:0; width:149px; padding:0 0 0 20px; height:60px; border-right:1px solid #ff8c67; background:#f26538; color:#fff; transition:all .5s ease; text-transform:uppercase}
@@ -164,10 +167,10 @@ nav span {display:table-cell; vertical-align:middle; height:80px; padding:0 20px
 
 .side-link {position:absolute; right:-54px; top:0; width:54px; height:60px; background:#fff url(../images/side-link.png) no-repeat center}
 .callback-link {position:absolute; right:-461px; top:0; width:67px; height:60px; background:#f26538 url(../images/callback-link.png) no-repeat center; z-index:99}
-.hidden-menu .callback-link {right:-54px; top:55px; width:54px; height:55px}
+.hidden-menu .callback-link {right:-54px; top:60px; width:54px; height:55px}
 
 .callback {display:none; position:absolute; right:-744px; top:0; background:#f26538; z-index:98; width:310px; padding:15px 20px 25px 20px; color:#fff}
-.hidden-menu .callback {right:-350px; top:55px}
+.hidden-menu .callback {right:-350px; top:60px}
 .callback h3 {color:#fff; margin-top:0; padding:0 0 0 46px}
 .callback .form-label {font-weight:bold; color:#fff; opacity:0.5; padding-top:12px}
 .callback .form-label strong {color:#fff; font-weight:bold}
@@ -768,17 +771,17 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .choose-window-floors li.active a .choose-window-floor {padding:1px 0; margin-top:-1px; color:#fff; background:#f26538}
 .choose-window-floor-count {float:left; width:18px; height:18px; margin:4px 0 0 10px; border:1px solid #000; text-align:center; font-size:13px; line-height:18px}
 .choose-window-floor-count.disabled {opacity:.2}
-.choose-window-floor-count-1 {border-color:#499e3b; color:#499e3b}
-.choose-window-floor-count-2 {border-color:#006cb8; color:#006cb8}
-.choose-window-floor-count-3 {border-color:#f53d20; color:#f53d20}
+.choose-window-floor-count-1 {border-color:#326700; color:#326700}
+.choose-window-floor-count-2 {border-color:#324da6; color:#324da6}
+.choose-window-floor-count-3 {border-color:#c20876; color:#c20876}
 .choose-window-floors-bottom {width:143px; height:46px; background:url(../images/choose-window-floors-bottom.png); margin:0 0 0 56px; position:relative}
 .choose-window-floors-rooms {font-size:11px; line-height:12px; color:#a2a2a2; text-align:center; padding:37px 0 0 30px; position:relative}
 .choose-window-floors-room {float:left; padding:0 0 0 20px}
 .choose-window-floors-room:first-child {padding:0}
 .choose-window-floors-room-icon {width:9px; height:9px; margin:0 auto; border-width:1px; border-style:solid}
-.choose-window-floors-room-icon-1 {border-color:#499e3b}
-.choose-window-floors-room-icon-2 {border-color:#006cb8}
-.choose-window-floors-room-icon-3 {border-color:#f53d20}
+.choose-window-floors-room-icon-1 {border-color:#326700}
+.choose-window-floors-room-icon-2 {border-color:#324da6}
+.choose-window-floors-room-icon-3 {border-color:#c20876}
 .choose-window-floors-room-title {padding:6px 0 0 0}
 
 .choose-window-tab {display:none; padding:0 0 55px 0; vertical-align:top}
