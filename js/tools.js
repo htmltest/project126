@@ -759,7 +759,26 @@ var stopScrollGallery = false;
             $('.choose-map').maphilight();
         });
 
+        $('body').on('mouseover', '.choose-wrap area', function() {
+            var curArea = $(this);
+            var curIndex = $('.choose-wrap area').index(curArea);
+            curArea.data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+            $('.choose-map').maphilight();
+        });
+
+        $('body').on('mouseout', '.choose-wrap area', function() {
+            var curArea = $(this);
+            var curIndex = $('.choose-wrap area').index(curArea);
+            if (!$('.choose-map-window').eq(curIndex).hasClass('visible')) {
+                curArea.data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+                $('.choose-map').maphilight();
+            }
+        });
+
         $('body').on('click', '.choose-wrap area', function(e) {
+            var curArea = $(this);
+            var curIndex = $('.choose-wrap area').index(curArea);
+            $('.choose-map-section-number').eq(curIndex).find('.choose-map-section-number-title').trigger('click');
             e.preventDefault();
         });
 
@@ -848,6 +867,7 @@ var stopScrollGallery = false;
             });
             var curWindowIndex = $('.choose-map-window').index(curWindow);
             $('.choose-map-section-number').eq(curWindowIndex).find('.choose-map-section-number-flats-' + curRooms).trigger('click');
+            $('.choose-map-section-number').eq(curWindowIndex).addClass('active');
         });
 
         $('.choose-map-rooms-item a.active').each(function(e) {
