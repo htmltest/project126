@@ -131,7 +131,7 @@ form {margin:20px 0; padding:0}
 .message-error-text {position:absolute; color:#464b54; left:0; top:50%; margin-top:-95px; width:100%; text-align:center; background:url(../images/error.png) no-repeat center top; padding:141px 0 0 0}
 .message-error-text span {text-transform:uppercase; font-weight:bold; color:#121e35; display:block; padding:0 0 9px 0}
 
-.wrapper {min-width:940px; position:relative; min-height:100%}
+.wrapper {min-width:940px; position:relative; min-height:100%; overflow:hidden}
 .wrapper-inner {padding:0 0 160px 0}
 .wrapper-inner:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 

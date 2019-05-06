@@ -651,7 +651,7 @@ var stopScrollGallery = false;
 
         $('.choose-wrap').each(function() {
             for (var i = 0; i < chooseData.length; i++) {
-                $('.choose-wrap map').append('<area shape="poly" coords="' + chooseData[i].coords + '" href="#" alt="" data-maphilight=\'{"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0}\' />');
+                $('.choose-wrap map').append('<area shape="poly" coords="' + chooseData[i].coords + '" href="#" alt="" data-maphilight=\'{"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0}\' />');
                 $('.choose-map-section-numbers').append('<div class="choose-map-section-number" style="left:' + chooseData[i].left + 'px; top:' + chooseData[i].top + 'px"><div class="choose-map-section-number-title">' + chooseData[i].number + '</div></div>');
                 var newWindow = $('<div class="choose-map-window"><div class="choose-map-window-wrap"><div class="choose-map-window-title">' + chooseData[i].title + '</div><div class="choose-map-window-status">' + chooseData[i].status + '</div><div class="choose-map-window-menu"><ul></ul></div><div class="choose-map-window-tabs"></div><div class="choose-map-window-close"></div></div></div>');
                 if (typeof (chooseData[i].flats) != 'undefined') {
@@ -691,7 +691,14 @@ var stopScrollGallery = false;
                 curLink.addClass('active');
                 $('.choose-map-section-number-flats-' + curRooms).addClass('visible');
             }
-            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+            $('.choose-content area').each(function() {
+                var areaIndex = $('.choose-content area').index($(this));
+                if ($('.choose-map-section-number').eq(areaIndex).hasClass('active')) {
+                    $(this).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+                } else {
+                    $(this).data('maphilight', {"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0});
+                }
+            });
             $('.choose-map').maphilight();
             $('.choose-map-window.visible').removeClass('visible');
             $('.choose-map-section-number-flats.active').removeClass('active');
@@ -709,7 +716,14 @@ var stopScrollGallery = false;
         });
 
         $('body').on('click', '.choose-map-window-close', function(e) {
-            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+            $('.choose-content area').each(function() {
+                var areaIndex = $('.choose-content area').index($(this));
+                if ($('.choose-map-section-number').eq(areaIndex).hasClass('active')) {
+                    $(this).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+                } else {
+                    $(this).data('maphilight', {"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0});
+                }
+            });
             $('.choose-map').maphilight();
             $('.choose-map-window.visible').removeClass('visible');
             $('.choose-map-section-number-flats.active').removeClass('active');
@@ -718,14 +732,25 @@ var stopScrollGallery = false;
         $('body').on('click', '.choose-map-section-number-flats', function() {
             var curItem = $(this);
             var curIndex = $('.choose-map-section-number').index(curItem.parent());
-            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+            $('.choose-content area').each(function() {
+                var areaIndex = $('.choose-content area').index($(this));
+                if ($('.choose-map-section-number').eq(areaIndex).hasClass('active')) {
+                    $(this).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+                } else {
+                    $(this).data('maphilight', {"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0});
+                }
+            });
             $('.choose-map-window.visible').removeClass('visible');
             if (curItem.hasClass('active')) {
                 curItem.removeClass('active');
             } else {
                 $('.choose-map-section-number-flats.active').removeClass('active');
                 curItem.addClass('active');
-                $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+                if ($('.choose-map-section-number').eq(curIndex).hasClass('active')) {
+                    $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+                } else {
+                    $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0.8, "alwaysOn":true});
+                }
                 var curLeft = curItem.parent().offset().left - $('.choose-wrap').offset().left + curItem.parent().outerWidth() / 2;
                 var curTop = curItem.parent().offset().top - $('.choose-wrap').offset().top + curItem.parent().outerHeight() / 2;
                 var curWindow = $('.choose-map-window').eq(curIndex);
@@ -741,11 +766,23 @@ var stopScrollGallery = false;
         });
 
         $('body').on('click', '.choose-map-section-number-title', function() {
+            $('.choose-map-section-number-flats.active').removeClass('active');
             var curItem = $(this);
             var curIndex = $('.choose-map-section-number').index(curItem.parent());
-            $('.choose-content area').data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+            $('.choose-content area').each(function() {
+                var areaIndex = $('.choose-content area').index($(this));
+                if ($('.choose-map-section-number').eq(areaIndex).hasClass('active')) {
+                    $(this).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+                } else {
+                    $(this).data('maphilight', {"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0});
+                }
+            });
             $('.choose-map-window.visible').removeClass('visible');
-            $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+            if ($('.choose-map-section-number').eq(curIndex).hasClass('active')) {
+                $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+            } else {
+                $('.choose-content area').eq(curIndex).data('maphilight', {"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0.8, "alwaysOn":true});
+            }
             var curLeft = curItem.parent().offset().left - $('.choose-wrap').offset().left + curItem.parent().outerWidth() / 2;
             var curTop = curItem.parent().offset().top - $('.choose-wrap').offset().top + curItem.parent().outerHeight() / 2;
             var curWindow = $('.choose-map-window').eq(curIndex);
@@ -762,7 +799,9 @@ var stopScrollGallery = false;
         $('body').on('mouseover', '.choose-wrap area', function() {
             var curArea = $(this);
             var curIndex = $('.choose-wrap area').index(curArea);
-            curArea.data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+            if (!$('.choose-map-section-number').eq(curIndex).hasClass('active')) {
+                curArea.data('maphilight', {"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0.8, "alwaysOn":true});
+            }
             $('.choose-map').maphilight();
         });
 
@@ -770,7 +809,11 @@ var stopScrollGallery = false;
             var curArea = $(this);
             var curIndex = $('.choose-wrap area').index(curArea);
             if (!$('.choose-map-window').eq(curIndex).hasClass('visible')) {
-                curArea.data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0});
+                if ($('.choose-map-section-number').eq(curIndex).hasClass('active')) {
+                    curArea.data('maphilight', {"stroke":0, "strokeColor":"ff0000", "fillColor":"ff0000", "fillOpacity":0.8, "alwaysOn":true});
+                } else {
+                    curArea.data('maphilight', {"stroke":0, "strokeColor":"f26538", "fillColor":"f26538", "fillOpacity":0});
+                }
                 $('.choose-map').maphilight();
             }
         });
@@ -866,8 +909,8 @@ var stopScrollGallery = false;
                 $('.choose-map-section-number-flats-' + curRooms).addClass('visible');
             });
             var curWindowIndex = $('.choose-map-window').index(curWindow);
-            $('.choose-map-section-number').eq(curWindowIndex).find('.choose-map-section-number-flats-' + curRooms).trigger('click');
             $('.choose-map-section-number').eq(curWindowIndex).addClass('active');
+            $('.choose-map-section-number').eq(curWindowIndex).find('.choose-map-section-number-flats-' + curRooms).trigger('click');
         });
 
         $('.choose-map-rooms-item a.active').each(function(e) {
