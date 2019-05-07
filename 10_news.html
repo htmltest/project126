@@ -82,6 +82,10 @@
                         <div class="form-label">Имя <strong>/ опционально</strong></div>
                         <div class="form-input"><input type="text" name="name" value="" /></div>
 
+                        <div class="form-field">
+                            <div class="form-checkbox"><span><input type="checkbox" name="policy" class="required" /></span>Я даю свое согласие на обработку моих перснальных данных, в соответствии с Федеральным законом №152-Ф3 "О персональных данных", на условиях и целях, определенных в <a href="#">политике конфеденциальности</a>.</div>
+                        </div>
+
                         <div class="form-submit"><input type="submit" value="Отправить" /></div>
                     </form>
 
@@ -273,8 +277,8 @@
                                 $('.map-ways-item-foot').removeClass('active');
                                 multiRoute = new ymaps.multiRouter.MultiRoute({
                                     referencePoints: [
-                                        'Анапа, Привокзальная улица, 1',
-                                        '44.898939, 37.348521'
+                                        '55.755814, 37.617635',
+                                        '55.628622, 37.192004'
                                     ],
                                     params: {
                                         results: 1
@@ -311,8 +315,8 @@
                                 $('.map-ways-item-auto').removeClass('active');
                                 multiRoute = new ymaps.multiRouter.MultiRoute({
                                     referencePoints: [
-                                        'Крымская улица, 182, Россия, Краснодарский край, Анапа',
-                                        '44.898939, 37.348521'
+                                        '55.755814, 37.617635',
+                                        '55.628622, 37.192004'
                                     ],
                                     params: {
                                         results: 1

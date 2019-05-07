@@ -27,12 +27,12 @@ ol li:before {content:counter(point)'.'; counter-increment:point 1; left:0; posi
 .wrapper th a {text-decoration:none; color:#818181}
 .wrapper th a span {font-family:arial, helvetica, sans-serif}
 .wrapper td {vertical-align:middle; border-top:1px solid #e6e6e6; padding:21px 0 22px 30px}
-.wrapper tbody tr:hover {background:#fff8f6; cursor:pointer}
-.wrapper tbody tr:hover .price {color:#ff6532}
-.wrapper tbody tr:hover .price a {color:#ff6532}
 .wrapper tr:first-child td {border-top:2px solid #32a643}
 .wrapper td.price {font-weight:bold; color:#252525; font-size:18px}
 .wrapper td.price a {color:#252525; text-decoration:none}
+.wrapper tbody tr[data-href]:hover {background:#fff8f6; cursor:pointer}
+.wrapper tbody tr[data-href]:hover .price {color:#ff6532}
+.wrapper tbody tr[data-href]:hover .price a {color:#ff6532}
 .wrapper td.price a:hover {color:#ff6532}
 .wrapper td.economy {font-weight:bold; color:#629e2a; font-size:20px}
 
@@ -181,6 +181,8 @@ nav span {display:table-cell; vertical-align:middle; height:80px; padding:0 20px
 .callback .form-input label.error:after {right:auto; left:-11px; border-right:11px solid #121e35; border-left:none}
 .callback .form-required {color:#f8c9c5}
 .callback .form-required span {color:#791203}
+.callback .form-checkbox {font-size:10px; line-height:12px}
+.callback .form-checkbox a {color:#fff}
 .callback .form-submit {width:auto}
 .callback .form-submit input {border:1px solid #f79f91; background:none}
 .callback .form-submit input:hover {background:none; border-color:#fff}
@@ -300,6 +302,7 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .window-order {width:380px; padding:5px 40px}
 .window-order h2 {margin-top:24px}
 .window-order form {margin:39px 0 20px 0}
+.window-order .form-checkbox {font-size:10px; line-height:12px; margin:0}
 .window-order .form-submit {width:auto}
 
 .infrastructure {text-align:center; padding:79px 0 99px 0; margin:0 -70px; position:relative; overflow:hidden}
@@ -1163,6 +1166,7 @@ h1+.news-detail-date {margin-top:-19px}
 .mortgage-results-form-close:hover {background-color:#f26538}
 .mortgage-results-form-title {font-weight:bold; font-size:20px; line-height:25px; color:#121e35; padding:0 0 13px 0; text-transform:uppercase}
 .mortgage-results-form .form-label {margin-top:23px; font-weight:bold; text-transform:uppercase; color:#121e35}
+.mortgage-results-form .form-checkbox {font-size:10px; line-height:12px; margin:0}
 .mortgage-results-form .form-submit {width:100%}
 .mortgage-results-form-close-link {display:block; text-align:center; font-size:14px; color:#ef3e23; text-decoration:none}
 .mortgage-results-form-close-link:hover {color:#f26538; text-decoration:none}
