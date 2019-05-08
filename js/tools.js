@@ -1532,6 +1532,12 @@ var stopScrollGallery = false;
 
         $('.window input.maskPhone').mask('+7 (999) 999-99-99');
 
+        $('.window .form-checkbox span input:checked').parent().parent().addClass('checked');
+        $('.window .form-checkbox').click(function() {
+            $(this).toggleClass('checked');
+            $(this).find('input').prop('checked', $(this).hasClass('checked')).trigger('change');
+        });
+
         $('.window form').validate({
             ignore: '',
             invalidHandler: function(form, validatorcalc) {
