@@ -690,13 +690,13 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 
 .choose-map-window {display:none; position:absolute; left:0; top:0}
 .choose-map-window.visible {display:block}
-.choose-map-window-wrap {position:absolute; right:-82px; bottom:auto; top:30px; white-space:nowrap; font-size:13px; background:#fff; padding:0 0 9px 0; width:350px; box-shadow:0 0 30px rgba(12, 24, 10, .15)}
+.choose-map-window-wrap {position:absolute; right:-82px; bottom:auto; top:30px; white-space:nowrap; font-size:13px; background:#fff; padding:0 0 9px 0; width:409px; box-shadow:0 0 30px rgba(12, 24, 10, .15)}
 .choose-map-window.side-to-left .choose-map-window-wrap {right:auto; left:-82px}
 .choose-map-window-wrap:after {content:""; display:block; width:0; height:0; position:absolute; bottom:auto; top:-14px; right:70px; border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:14px solid #fff; border-top:none}
 .choose-map-window.side-to-left .choose-map-window-wrap:after {right:auto; left:70px}
 .choose-map-window-title {font-weight:bold; font-size:16px; line-height:30px; color:#252525; padding:25px 24px 0 24px; text-align:left}
 .choose-map-window-status {padding:8px 24px 0 24px}
-.choose-map-window-menu {margin:0 24px; font-weight:bold; font-size:12px; line-height:20px; border-bottom:2px solid #f7f7f7; padding:9px 0 0 0}
+.choose-map-window-menu {margin:0 24px; font-weight:bold; font-size:12px; line-height:20px; border-bottom:3px solid #e8e8e8; padding:9px 0 0 0}
 .choose-map-window-menu ul {margin:0; padding:0; list-style:none}
 .choose-map-window-menu ul:after {content:""; display:block; clear:both}
 .choose-map-window-menu ul li {float:left; margin:0 0 0 24px; padding:0; position:relative; cursor:pointer}
@@ -704,7 +704,9 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .choose-map-window-menu ul li:before {display:none}
 .choose-map-window-menu ul li.active {color:#ff0000}
 .choose-map-window-menu ul li:hover {color:#ff0000}
-.choose-map-window-menu ul li.active:after {content:""; display:block; position:absolute; left:0; bottom:-5px; height:3px; background:#ff2626; right:0}
+.choose-map-window-menu ul li.active:after {content:""; display:block; position:absolute; left:0; bottom:-3px; height:3px; background:#ff2626; right:0}
+.choose-map-window-menu ul li span {color:#cacaca; font-weight:500; font-size:12px; padding:0 0 0 3px}
+.choose-map-window-menu ul li.active span {color:#f77575}
 .choose-map-window-tabs {padding:22px 0 0 0; position:relative}
 .choose-map-window-tab {display:table; width:100%; position:absolute; left:-9999px; top:-9999px; opacity:0; transition:opacity 0.5s}
 .choose-map-window-tab.active {position:relative; left:0; top:0; opacity:1}

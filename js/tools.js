@@ -657,7 +657,7 @@ var stopScrollGallery = false;
                 if (typeof (chooseData[i].flats) != 'undefined') {
                     var newFlats = chooseData[i].flats;
                     for (var j = 0; j < newFlats.length; j++) {
-                        newWindow.find('.choose-map-window-menu ul').append('<li>' + newFlats[j].room + '-комнатные</li>');
+                        var newCount = 0;
                         var newTab = $('<div class="choose-map-window-tab choose-map-window-tab-' + newFlats[j].room + '"><div class="choose-map-window-headers"><div class="choose-map-window-header">Секция</div><div class="choose-map-window-header">Кол-во</div><div class="choose-map-window-header">Стоимость</div><div class="choose-map-window-header"></div></div></div>');
                         var newRows = newFlats[j].entrances;
                         for (var k = 0; k < newRows.length; k++) {
@@ -666,8 +666,14 @@ var stopScrollGallery = false;
                                 activeRowClass = ' active';
                             }
                             newTab.append('<a href="' + newRows[k].url + '" class="choose-map-window-row' + activeRowClass + '"><div class="choose-map-window-row-1">' + newRows[k].entrance + ' секция</div><div class="choose-map-window-row-2">' + newRows[k].count + '</div><div class="choose-map-window-row-3">' + newRows[k].price + '</div><div class="choose-map-window-row-4">&rarr;</div></a>');
+                            newCount += Number(newRows[k].count);
                         }
 
+                        if (newFlats[j].room == 1) {
+                            newWindow.find('.choose-map-window-menu ul').append('<li>' + newFlats[j].room + ' комната <span>(' + newCount + ')</span></li>');
+                        } else {
+                            newWindow.find('.choose-map-window-menu ul').append('<li>' + newFlats[j].room + ' комнаты <span>(' + newCount + ')</span></li>');
+                        }
                         newWindow.find('.choose-map-window-tabs').append(newTab);
                     }
                 }
@@ -791,7 +797,18 @@ var stopScrollGallery = false;
                 curWindow.addClass('side-to-left');
             }
             if (curWindow.find('.choose-map-window-menu ul li.active').length == 0) {
-                curWindow.find('.choose-map-window-menu ul li').eq(0).trigger('click');
+                var curLI = null;
+                for (var i = 0; i < curWindow.find('.choose-map-window-menu ul li').length; i++) {
+                    if (curWindow.find('.choose-map-window-menu ul li').eq(i).find('span').html() != '(0)') {
+                        curLI = curWindow.find('.choose-map-window-menu ul li').eq(i);
+                    }
+                }
+                if (curLI == null) {
+                    curLI = curWindow.find('.choose-map-window-menu ul li').eq(0);
+                }
+                if (curLI != null) {
+                    curLI.trigger('click');
+                }
             }
             $('.choose-map').maphilight();
         });
@@ -903,11 +920,6 @@ var stopScrollGallery = false;
             if (curTab.hasClass('choose-map-window-tab-3')) {
                 curRooms = 3;
             }
-            $('.choose-map-rooms-item-' + curRooms).each(function() {
-                var curLink = $(this);
-                curLink.addClass('active');
-                $('.choose-map-section-number-flats-' + curRooms).addClass('visible');
-            });
             var curWindowIndex = $('.choose-map-window').index(curWindow);
             $('.choose-map-section-number').eq(curWindowIndex).addClass('active');
             $('.choose-map-section-number').eq(curWindowIndex).find('.choose-map-section-number-flats-' + curRooms).trigger('click');
