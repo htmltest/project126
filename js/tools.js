@@ -1381,6 +1381,7 @@ var stopScrollGallery = false;
                     cache: false
                 }).done(function(html) {
                     $('.mortgage-content').html(html);
+                    $('html, body').animate({'scrollTop': $('.mortgage-content').offset().top});
 
                     $('.mortgage-results-form input.maskPhone').mask('+7 (999) 999-99-99');
 
@@ -1467,6 +1468,7 @@ var stopScrollGallery = false;
                     curBlock.addClass('active');
                     $('.rules-item a.active').removeClass('active');
                     $(this).addClass('active');
+                    $('html, body').animate({'scrollTop': curBlock.offset().top});
                 }
                 e.preventDefault();
             }
@@ -1486,6 +1488,19 @@ var stopScrollGallery = false;
             });
         });
 
+        $('.up-link').click(function(e) {
+            $('html, body').animate({'scrollTop': 0});
+            e.preventDefault();
+        });
+
+    });
+
+    $(window).on('load resize scroll', function() {
+        if ($(window).scrollTop() > $(window).height()) {
+            $('.up-link').addClass('visible');
+        } else {
+            $('.up-link').removeClass('visible');
+        }
     });
 
     function windowOpen(contentWindow) {

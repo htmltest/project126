@@ -1339,7 +1339,12 @@
                             myMap.behaviors.disable('scrollZoom');
 
                             var coords = [55.628622, 37.192004];
-                            var myPlacemark = new ymaps.Placemark(coords, {}, {});
+                            var myPlacemark = new ymaps.Placemark(coords, {}, {
+                                iconLayout: 'default#image',
+                                iconImageHref: 'images/map-icon.png',
+                                iconImageSize: [71, 73],
+                                iconImageOffset: [-29, -73]
+                            });
                             myMap.geoObjects.add(myPlacemark);
                             myMap.setCenter(coords);
                             var position = myMap.getGlobalPixelCenter();
@@ -1471,6 +1476,8 @@
             </div>
 
         </footer>
+
+        <a href="#" class="up-link"></a>
 
     </body>
 </html>

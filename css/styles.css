@@ -1271,3 +1271,7 @@ h1+.news-detail-date {margin-top:-19px}
 .new-plans-side-list .new-plans-item:hover {border-color:#ef3e23}
 .new-plans-side .jspTrack {background:#c5c8cf}
 .new-plans-side .jspDrag {background:#121e35}
+
+.up-link {visibility:hidden; opacity:0; position:fixed; right:5px; bottom:39px; z-index:99; width:50px; height:50px; background:#ff6533 url(../images/up-link.png) no-repeat center; transition:all 0.2s}
+.up-link:hover {background-color:#df5022}
+.up-link.visible {visibility:visible; opacity:1}
