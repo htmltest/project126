@@ -245,50 +245,68 @@
                         );
 
                         var coords = [55.662572, 37.284971];
-                        var myPlacemark = new ymaps.Placemark(coords, {}, {
-                            iconLayout: 'default#image',
-                            iconImageHref: 'images/map-icon.png',
-                            iconImageSize: [71, 73],
-                            iconImageOffset: [-29, -73]
-                        });
-                        myMap.geoObjects.add(myPlacemark);
                         myMap.setCenter(coords);
                         var position = myMap.getGlobalPixelCenter();
                         myMap.setGlobalPixelCenter([ position[0], position[1] - 220 ]);
 
-                        for (var i = 0; i < objectsMap.length - 1; i++) {
+                        createPlacemarks();
 
-                            var myPlacemark = new ymaps.Placemark([objectsMap[i][2], objectsMap[i][3]], {
-                                    balloonImg: 'images/infrastructure-map-' + objectsMap[i][1] + '.png',
-                                    balloonType: objectsMap[i][1],
-                                    balloonContent: objectsMap[i][0]
-                                }, {
-                                    balloonLayout: MyBalloonLayout,
-                                    balloonContentLayout: MyBalloonContentLayout,
-                                    balloonPanelMaxMapArea: 0,
-                                    balloonShadow: false,
-                                    iconLayout: 'default#image',
-                                    iconImageHref: 'images/infrastructure-map-' + objectsMap[i][1] + '.png',
-                                    iconImageSize: [38, 38],
-                                    iconImageOffset: [-19, -19],
-                                    hideIconOnBalloonOpen: false
-                                });
-                            myPlacemark.options.set({
-                                showHintOnHover: false
+                        function createPlacemarks(filterType) {
+                            var myPlacemark = new ymaps.Placemark(coords, {}, {
+                                iconLayout: 'default#image',
+                                iconImageHref: 'images/map-icon.png',
+                                iconImageSize: [71, 73],
+                                iconImageOffset: [-29, -73]
                             });
-
-                            myPlacemark.events.add('mouseenter', function (e) {
-                                var geoObject = e.get('target'),
-                                    balloon = geoObject.balloon;
-
-                                balloon.open();
-                                balloon.events.add('mouseleave', function () {
-                                    balloon.close();
-                                });
-                            });
-
                             myMap.geoObjects.add(myPlacemark);
+
+                            for (var i = 0; i < objectsMap.length - 1; i++) {
+
+                                if (typeof (filterType) == 'undefined' || filterType == objectsMap[i][1]) {
+
+                                    var myPlacemark = new ymaps.Placemark([objectsMap[i][2], objectsMap[i][3]], {
+                                            balloonImg: 'images/infrastructure-map-' + objectsMap[i][1] + '.png',
+                                            balloonType: objectsMap[i][1],
+                                            balloonContent: objectsMap[i][0]
+                                        }, {
+                                            balloonLayout: MyBalloonLayout,
+                                            balloonContentLayout: MyBalloonContentLayout,
+                                            balloonPanelMaxMapArea: 0,
+                                            balloonShadow: false,
+                                            iconLayout: 'default#image',
+                                            iconImageHref: 'images/infrastructure-map-' + objectsMap[i][1] + '.png',
+                                            iconImageSize: [38, 38],
+                                            iconImageOffset: [-19, -19],
+                                            hideIconOnBalloonOpen: false
+                                        });
+                                    myPlacemark.options.set({
+                                        showHintOnHover: false
+                                    });
+
+                                    myPlacemark.events.add('mouseenter', function (e) {
+                                        var geoObject = e.get('target'),
+                                            balloon = geoObject.balloon;
+
+                                        balloon.open();
+                                        balloon.events.add('mouseleave', function () {
+                                            balloon.close();
+                                        });
+                                    });
+
+                                    myMap.geoObjects.add(myPlacemark);
+                                }
+                            }
                         }
+
+                        $('.infrastructure-list li').mouseover(function() {
+                            myMap.geoObjects.removeAll();
+                            createPlacemarks($(this).data('type'));
+                        });
+
+                        $('.infrastructure-list li').mouseout(function() {
+                            myMap.geoObjects.removeAll();
+                            createPlacemarks();
+                        });
 
                     }
 
@@ -299,17 +317,17 @@
                     <div class="infrastructure-list-title">Инфраструктура района</div>
                     <div class="infrastructure-list-text">Наведите на точку на карте, чтобы узнать подробности</div>
                     <ul>
-                        <li><img src="images/infrastructure-map-1.png" alt="" width="38" height="38" /><span>Ж/д станция «Анапа»</span></li>
-                        <li><img src="images/infrastructure-map-2.png" alt="" width="38" height="38" /><span>Детский сад</span></li>
-                        <li><img src="images/infrastructure-map-3.png" alt="" width="38" height="38" /><span>Школа</span></li>
-                        <li><img src="images/infrastructure-map-4.png" alt="" width="38" height="38" /><span>Супермаркет</span></li>
-                        <li><img src="images/infrastructure-map-5.png" alt="" width="38" height="38" /><span>Больница</span></li>
-                        <li><img src="images/infrastructure-map-6.png" alt="" width="38" height="38" /><span>Банк</span></li>
-                        <li><img src="images/infrastructure-map-7.png" alt="" width="38" height="38" /><span>Почта</span></li>
-                        <li><img src="images/infrastructure-map-8.png" alt="" width="38" height="38" /><span>Аптека</span></li>
-                        <li><img src="images/infrastructure-map-9.png" alt="" width="38" height="38" /><span>Кафе</span></li>
-                        <li><img src="images/infrastructure-map-10.png" alt="" width="38" height="38" /><span>Салон услуг</span></li>
-                        <li><img src="images/infrastructure-map-11.png" alt="" width="38" height="38" /><span>Спортивный клуб</span></li>
+                        <li data-type="1"><img src="images/infrastructure-map-1.png" alt="" width="38" height="38" /><span>Ж/д станция «Анапа»</span></li>
+                        <li data-type="2"><img src="images/infrastructure-map-2.png" alt="" width="38" height="38" /><span>Детский сад</span></li>
+                        <li data-type="3"><img src="images/infrastructure-map-3.png" alt="" width="38" height="38" /><span>Школа</span></li>
+                        <li data-type="4"><img src="images/infrastructure-map-4.png" alt="" width="38" height="38" /><span>Супермаркет</span></li>
+                        <li data-type="5"><img src="images/infrastructure-map-5.png" alt="" width="38" height="38" /><span>Больница</span></li>
+                        <li data-type="6"><img src="images/infrastructure-map-6.png" alt="" width="38" height="38" /><span>Банк</span></li>
+                        <li data-type="7"><img src="images/infrastructure-map-7.png" alt="" width="38" height="38" /><span>Почта</span></li>
+                        <li data-type="8"><img src="images/infrastructure-map-8.png" alt="" width="38" height="38" /><span>Аптека</span></li>
+                        <li data-type="9"><img src="images/infrastructure-map-9.png" alt="" width="38" height="38" /><span>Кафе</span></li>
+                        <li data-type="10"><img src="images/infrastructure-map-10.png" alt="" width="38" height="38" /><span>Салон услуг</span></li>
+                        <li data-type="11"><img src="images/infrastructure-map-11.png" alt="" width="38" height="38" /><span>Спортивный клуб</span></li>
                     </ul>
                 </div>
                 <!-- infrastructure list END -->
