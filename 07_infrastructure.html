@@ -249,63 +249,78 @@
                         var position = myMap.getGlobalPixelCenter();
                         myMap.setGlobalPixelCenter([ position[0], position[1] - 220 ]);
 
-                        createPlacemarks();
+                        var myCollections = [];
 
-                        function createPlacemarks(filterType) {
-                            var myPlacemark = new ymaps.Placemark(coords, {}, {
-                                iconLayout: 'default#image',
-                                iconImageHref: 'images/map-icon.png',
-                                iconImageSize: [71, 73],
-                                iconImageOffset: [-29, -73]
-                            });
-                            myMap.geoObjects.add(myPlacemark);
-
-                            for (var i = 0; i < objectsMap.length - 1; i++) {
-
-                                if (typeof (filterType) == 'undefined' || filterType == objectsMap[i][1]) {
-
-                                    var myPlacemark = new ymaps.Placemark([objectsMap[i][2], objectsMap[i][3]], {
-                                            balloonImg: 'images/infrastructure-map-' + objectsMap[i][1] + '.png',
-                                            balloonType: objectsMap[i][1],
-                                            balloonContent: objectsMap[i][0]
-                                        }, {
-                                            balloonLayout: MyBalloonLayout,
-                                            balloonContentLayout: MyBalloonContentLayout,
-                                            balloonPanelMaxMapArea: 0,
-                                            balloonShadow: false,
-                                            iconLayout: 'default#image',
-                                            iconImageHref: 'images/infrastructure-map-' + objectsMap[i][1] + '.png',
-                                            iconImageSize: [38, 38],
-                                            iconImageOffset: [-19, -19],
-                                            hideIconOnBalloonOpen: false
-                                        });
-                                    myPlacemark.options.set({
-                                        showHintOnHover: false
-                                    });
-
-                                    myPlacemark.events.add('mouseenter', function (e) {
-                                        var geoObject = e.get('target'),
-                                            balloon = geoObject.balloon;
-
-                                        balloon.open();
-                                        balloon.events.add('mouseleave', function () {
-                                            balloon.close();
-                                        });
-                                    });
-
-                                    myMap.geoObjects.add(myPlacemark);
+                        for (var i = 0; i < objectsMap.length - 1; i++) {
+                            var curType = objectsMap[i][1];
+                            var indexType = -1;
+                            for (var j = 0; j < myCollections.length; j++) {
+                                if (myCollections[j].type == curType) {
+                                    indexType = j;
                                 }
                             }
+                            if (indexType < 0) {
+                                myCollections.push({"type": curType, "collection": new ymaps.GeoObjectCollection()});
+                                indexType = myCollections.length - 1;
+                            }
+
+                            var myPlacemark = new ymaps.Placemark([objectsMap[i][2], objectsMap[i][3]], {
+                                    balloonImg: 'images/infrastructure-map-' + curType + '.png',
+                                    balloonType: objectsMap[i][1],
+                                    balloonContent: objectsMap[i][0]
+                                }, {
+                                    balloonLayout: MyBalloonLayout,
+                                    balloonContentLayout: MyBalloonContentLayout,
+                                    balloonPanelMaxMapArea: 0,
+                                    balloonShadow: false,
+                                    iconLayout: 'default#image',
+                                    iconImageHref: 'images/infrastructure-map-' + curType + '.png',
+                                    iconImageSize: [38, 38],
+                                    iconImageOffset: [-19, -19],
+                                    hideIconOnBalloonOpen: false
+                                });
+                            myPlacemark.options.set({
+                                showHintOnHover: false
+                            });
+
+                            myPlacemark.events.add('mouseenter', function (e) {
+                                var geoObject = e.get('target'),
+                                    balloon = geoObject.balloon;
+
+                                balloon.open();
+                                balloon.events.add('mouseleave', function () {
+                                    balloon.close();
+                                });
+                            });
+                            myCollections[indexType].collection.add(myPlacemark);
                         }
 
-                        $('.infrastructure-list li').mouseover(function() {
-                            myMap.geoObjects.removeAll();
-                            createPlacemarks($(this).data('type'));
+                        for (var j = 0; j < myCollections.length; j++) {
+                            myMap.geoObjects.add(myCollections[j].collection);
+                        }
+
+                        var myPlacemark = new ymaps.Placemark(coords, {}, {
+                            iconLayout: 'default#image',
+                            iconImageHref: 'images/map-icon.png',
+                            iconImageSize: [71, 73],
+                            iconImageOffset: [-29, -73],
+                            zIndex: 999
+                        });
+                        myMap.geoObjects.add(myPlacemark, 999);
+
+                        $('.infrastructure-list li').on('mouseover', function(e) {
+                            var curType = $(this).data('type');
+                            for (var i = 0; i < myCollections.length; i++) {
+                                if (myCollections[i].type != curType) {
+                                    myCollections[i].collection.options.set('visible', false);
+                                }
+                            }
                         });
 
-                        $('.infrastructure-list li').mouseout(function() {
-                            myMap.geoObjects.removeAll();
-                            createPlacemarks();
+                        $('.infrastructure-list li').on('mouseout', function(e) {
+                            for (var i = 0; i < myCollections.length; i++) {
+                                myCollections[i].collection.options.set('visible', true);
+                            }
                         });
 
                     }
