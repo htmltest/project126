@@ -4,7 +4,6 @@ body {min-width:1180px; height:100%; margin:0; padding:0; font:15px/20px Arial, 
 
 .fonts-loaded body {font-family:"Open Sans", sans-serif}
 
-
 a {color:#32a643; outline:none; text-decoration:none}
 a:hover {text-decoration:underline}
 
@@ -436,15 +435,14 @@ footer {height:160px; position:relative; margin:-160px 0 0 0}
 .plan-types-variants-more:hover {background:#df5022; text-decoration:none}
 
 .plans-compare {display:table-cell; vertical-align:top; padding:0 0 0 10px; width:380px; box-sizing:border-box; position:relative}
-.plans-compare-images {line-height:0}
-.plans-compare-images img {display:none; max-width:370px}
-.plans-compare-images img.active {display:block; margin:0 auto}
-.plans-compare-ctrl {text-align:center; padding:30px 0 0 0}
-.plans-compare-ctrl-link {display:inline-block; vertical-align:top; margin:0 8px; width:135px; height:35px; border:1px solid #f26538; color:#f26538; font-size:15px; line-height:35px; border-radius:3px}
-.plans-compare-ctrl-link:hover,
-.plans-compare-ctrl-link.active {color:#fff; background:#f26538; border-color:#f26538; text-decoration:none}
+.plans-compare:before {content:""; display:block; width:1080px; position:absolute; right:-1080px; top:-75px; bottom:0; background:#e6e7eb}
+.plans-compare-text {position:relative; left:auto; bottom:auto; width:100%; padding:65px 0 0 10px; box-sizing:border-box; color:#121e35; text-align:center; font-size:12px; line-height:15px; opacity:0.5}
 
-.plans .plans-compare {padding:160px 0 0 140px; width:50%}
+.plans .plans-compare {width:50%}
+.plans .plans-compare:before {content:""; display:block; width:1080px; position:absolute; right:-1000px; top:-75px; bottom:0; background:#e6e7eb}
+
+.new-plans-detail-compare .plans-compare {padding:0; width:100%}
+.new-plans-detail-compare .plans-compare:before {content:""; display:block; width:1080px; position:absolute; right:-1080px; top:-75px; bottom:-28px; background:#e6e7eb}
 
 .search {position:absolute; left:50%; bottom:50px; margin-left:-510px; z-index:3; width:980px; height:180px; background:#fff; border-radius:4px}
 .search h2 {margin:0 0 20px 0; font-weight:normal; color:#252525; padding:29px 0 0 40px; text-transform:none}
@@ -929,7 +927,7 @@ h1+.news-detail-date {margin-top:-19px}
 
 .flat-plan-container h1 {position:relative; z-index:2}
 .flat-plan-container h1 em {font-style:normal}
-.flat-plan-container h1 span {font-weight:300}
+.flat-plan-container h1 span {color:#32a643; font-weight:300}
 .flat-subtitle {font-size:20px; color:#32a643; margin:-33px 0 4px 0}
 .flat-descr {padding:16px 0 40px 0}
 
@@ -1243,21 +1241,18 @@ h1+.news-detail-date {margin-top:-19px}
 .new-plans-content dd em {font:normal normal 15px/20px Roboto, serif}
 
 .new-plans-detail {margin:0 265px 0 -45px}
-.new-plans-detail h1 span {color:#ef3e23; font-weight:normal}
+.new-plans-detail h1 span {color:#32a643; font-weight:normal}
 
 .new-plans-detail-inner {padding:0 0 28px 0}
 .new-plans-detail-inner:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.new-plans-detail-text {float:left; width:300px; padding:48px 0 0 0}
+.new-plans-detail-text {float:left; width:300px; box-sizing:border-box; padding:20px 0 0 0}
 .new-plans-detail-text dl {margin:0; padding:0}
 .new-plans-detail-text dl:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.new-plans-detail-text dt {float:left; clear:left; text-transform:uppercase; font-weight:bold; color:#aaadb3; padding:0 0 20px 0; margin:0}
+.new-plans-detail-text dt {float:left; clear:left; text-transform:uppercase; color:#aaadb3; padding:0 0 20px 0; margin:0}
 .new-plans-detail-text dd {float:right; clear:right; color:#121e35; padding:0 0 20px 0; margin:0}
 .new-plans-detail-text dd.price {color:#ef3e23; font-size:20px; font-weight:bold}
 
-.new-plans-detail-compare {float:right; margin:30px 55px 0 0; width:272px; position:relative}
-.new-plans-detail-compare .plans-compare {width:272px; display:block}
-.new-plans-detail-compare .plans-compare-images img {max-width:272px}
-.new-plans-detail-compare .plans-compare-ctrl-link {width:120px; margin:0 3px}
+.new-plans-detail-compare {float:right; margin:30px 0 0 0; padding:0 55px 0 15px; box-sizing:border-box; width:50%; position:relative}
 
 .new-plans-detail .other-flats {padding-top:12px; max-width:none; margin:0; border-top:1px solid #e7e8ea}
 .new-plans-detail .other-flats h3 {text-align:left; margin-top:20px; margin-bottom:27px; font-size:16px; font-weight:bold; color:#000; text-transform:uppercase}

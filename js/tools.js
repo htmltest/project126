@@ -135,8 +135,8 @@ var stopScrollGallery = false;
                 $('.plans-rooms-tab').eq(curIndex).addClass('active');
 
                 var curLink = $('.plans-rooms-tab').eq(curIndex).find('.plans-types li.active a');
-                $('.plans-compare-images img').eq(0).attr('src', curLink.data('comparebefore'));
-                $('.plans-compare-images img').eq(1).attr('src', curLink.data('compareafter'));
+                $('.cocoen').replaceWith('<div class="cocoen"><img src="' + curLink.data('comparebefore') + '" alt="" /><img src="' + curLink.data('compareafter') + '" alt="" /></div>');
+                $('.cocoen').cocoen();
             }
             e.preventDefault();
         });
@@ -153,21 +153,14 @@ var stopScrollGallery = false;
                 curBlock.find('.plans-types-tab.active').removeClass('active');
                 curBlock.find('.plans-types-tab').eq(curIndex).addClass('active');
 
-                $('.plans-compare-images img').eq(0).attr('src', $(this).data('comparebefore'));
-                $('.plans-compare-images img').eq(1).attr('src', $(this).data('compareafter'));
+                $('.cocoen').replaceWith('<div class="cocoen"><img src="' + $(this).data('comparebefore') + '" alt="" /><img src="' + $(this).data('compareafter') + '" alt="" /></div>');
+                $('.cocoen').cocoen();
             }
             e.preventDefault();
         });
 
-        $('.plans-compare-ctrl-link').click(function(e) {
-            var curIndex = $('.plans-compare-ctrl-link').index($(this));
-            if (!$(this).hasClass('active')) {
-                $('.plans-compare-images img.active').removeClass('active');
-                $('.plans-compare-images img').eq(curIndex).addClass('active');
-                $('.plans-compare-ctrl-link.active').removeClass('active');
-                $(this).addClass('active');
-            }
-            e.preventDefault();
+        $('.cocoen').each(function() {
+            $(this).cocoen();
         });
 
         $('.webcam-slider').each(function() {
